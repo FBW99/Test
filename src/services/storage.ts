@@ -1,13 +1,13 @@
 export const STORAGE_KEYS = {
-  USERS: "herbiz_users_v3",
-  SESSION: "herbiz_session_v3",
-  PRODUCTS: "herbiz_products_v3",
-  REVIEWS: "herbiz_reviews_v3",
-  ORDERS: "herbiz_orders_v3",
-  CART: "herbiz_cart_v3",
-  NOTIFICATIONS: "herbiz_notifications_v3",
-  INQUIRIES: "herbiz_inquiries_v3",
-  FINANCE_SETTINGS: "herbiz_finance_settings_v3",
+  USERS: "herbiz_users_v4",
+  SESSION: "herbiz_session_v4",
+  PRODUCTS: "herbiz_products_v4",
+  REVIEWS: "herbiz_reviews_v4",
+  ORDERS: "herbiz_orders_v4",
+  CART: "herbiz_cart_v4",
+  NOTIFICATIONS: "herbiz_notifications_v4",
+  INQUIRIES: "herbiz_inquiries_v4",
+  FINANCE_SETTINGS: "herbiz_finance_settings_v4",
 } as const;
 
 export function readStorage<T>(key: string, fallback: T): T {

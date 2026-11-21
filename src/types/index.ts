@@ -157,5 +157,6 @@ export interface SupportInquiry {
 export interface FinanceSettings {
   commissionRate: number; // Default 0.10 (10%)
   customerDeliveryFeeETB: number; // Default 50
-  deliveryPartnerPayoutETB: number; // Default 35
+  deliveryMarginRate: number; // Default 0.15 (15%)
+  deliveryPartnerPayoutETB: number; // Derived from fee * (1 - deliveryMarginRate), default 42
 }

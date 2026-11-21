@@ -34,25 +34,33 @@ export function AdminFinancePage() {
   const [customerDeliveryFee, setCustomerDeliveryFee] = useState(
     String(financeSettings.customerDeliveryFeeETB)
   );
-  const [driverPayout, setDriverPayout] = useState(
-    String(financeSettings.deliveryPartnerPayoutETB)
+  const [deliveryMarginPct, setDeliveryMarginPct] = useState(
+    String(Math.round((financeSettings.deliveryMarginRate ?? 0.15) * 100))
   );
 
   const summary = summarizeOrdersFinancials(orders, financeSettings);
   const validOrders = orders.filter((o) => o.status !== "Cancelled");
 
+  const previewFee = Math.max(0, Number(customerDeliveryFee) || 0);
+  const previewMarginPct = Math.max(0, Math.min(100, Number(deliveryMarginPct) || 0));
+  const previewMarginETB = Math.round(previewFee * (previewMarginPct / 100));
+  const previewPartnerPayout = Math.max(0, previewFee - previewMarginETB);
+
   const handleSaveRates = (e: React.FormEvent) => {
     e.preventDefault();
     const rate = Math.max(0, Math.min(50, Number(commissionPct) || 0)) / 100;
     const custFee = Math.max(0, Number(customerDeliveryFee) || 0);
-    const payout = Math.max(0, Math.min(custFee, Number(driverPayout) || 0));
+    const marginRate = Math.max(0, Math.min(100, Number(deliveryMarginPct) || 0)) / 100;
+    const marginETB = Math.round(custFee * marginRate);
+    const payout = Math.max(0, custFee - marginETB);
 
     updateFinanceSettings({
       commissionRate: rate,
       customerDeliveryFeeETB: custFee,
+      deliveryMarginRate: marginRate,
       deliveryPartnerPayoutETB: payout,
     });
-    toast.success("Platform commission & delivery fee rates updated!");
+    toast.success("Platform commission & delivery margin rates updated!");
   };
 
   return (
@@ -139,7 +147,7 @@ export function AdminFinancePage() {
             Configure Commission & Delivery Economics
           </CardTitle>
           <CardDescription>
-            Example: 1,000 ETB product at 10% = 100 ETB Herbiz commission + 900 ETB seller payout.
+            Example: 1,000 ETB product at 10% = 100 ETB commission + 900 ETB seller payout. {formatETB(previewFee)} delivery fee at {previewMarginPct}% margin = {formatETB(previewMarginETB)} Herbiz margin + {formatETB(previewPartnerPayout)} partner payout.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -169,13 +177,14 @@ export function AdminFinancePage() {
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="drvPay">Delivery Partner Cost / Payout (ETB)</Label>
+              <Label htmlFor="delMarginPct">Delivery Margin (%)</Label>
               <Input
-                id="drvPay"
+                id="delMarginPct"
                 type="number"
                 min={0}
-                value={driverPayout}
-                onChange={(e) => setDriverPayout(e.target.value)}
+                max={100}
+                value={deliveryMarginPct}
+                onChange={(e) => setDeliveryMarginPct(e.target.value)}
               />
             </div>
             <Button type="submit">Apply New Rates</Button>
@@ -208,10 +217,13 @@ export function AdminFinancePage() {
                   : financeSettings.commissionRate;
                 const comm = Math.round(o.subtotalETB * effRate);
                 const sellerNet = o.subtotalETB - comm;
-                const delMargin = Math.max(
-                  0,
-                  o.deliveryFeeETB - o.deliveryPartnerPayoutETB
-                );
+                const delMargin = o.adminCompleted
+                  ? Math.max(0, o.deliveryFeeETB - o.deliveryPartnerPayoutETB)
+                  : Math.round(
+                      o.deliveryFeeETB *
+                        Math.max(0, Math.min(1, financeSettings.deliveryMarginRate ?? 0.15))
+                    );
+                const partnerPayout = Math.max(0, o.deliveryFeeETB - delMargin);
                 const herbizRev = comm + delMargin;
 
                 return (
@@ -232,7 +244,7 @@ export function AdminFinancePage() {
                       {formatETB(o.deliveryFeeETB)}
                     </TableCell>
                     <TableCell className="text-right font-mono tabular-nums">
-                      {formatETB(o.deliveryPartnerPayoutETB)}
+                      {formatETB(partnerPayout)}
                     </TableCell>
                     <TableCell className="text-right font-mono font-bold text-[#166534] tabular-nums">
                       {formatETB(herbizRev)}

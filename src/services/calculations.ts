@@ -3,7 +3,8 @@ import type { FinanceSettings, Order } from "@/src/types";
 export const DEFAULT_FINANCE_SETTINGS: FinanceSettings = {
   commissionRate: 0.1, // 10%
   customerDeliveryFeeETB: 50,
-  deliveryPartnerPayoutETB: 35,
+  deliveryMarginRate: 0.15, // 15%
+  deliveryPartnerPayoutETB: 42,
 };
 
 export interface OrderFinancialBreakdown {
@@ -12,6 +13,7 @@ export interface OrderFinancialBreakdown {
   herbizCommissionETB: number;
   sellerNetEarningsETB: number;
   customerDeliveryFeeETB: number;
+  deliveryMarginRate: number;
   deliveryPartnerPayoutETB: number;
   herbizDeliveryMarginETB: number;
   totalCustomerPayableETB: number;
@@ -27,13 +29,16 @@ export function calculateOrderFinancials(
   const sellerNetEarningsETB = Math.max(0, subtotalETB - herbizCommissionETB);
 
   const customerDeliveryFeeETB = Math.max(0, settings.customerDeliveryFeeETB);
+  const deliveryMarginRate = Math.max(
+    0,
+    Math.min(1, settings.deliveryMarginRate ?? 0.15)
+  );
+  const herbizDeliveryMarginETB = Math.round(
+    customerDeliveryFeeETB * deliveryMarginRate
+  );
   const deliveryPartnerPayoutETB = Math.max(
     0,
-    Math.min(customerDeliveryFeeETB, settings.deliveryPartnerPayoutETB)
-  );
-  const herbizDeliveryMarginETB = Math.max(
-    0,
-    customerDeliveryFeeETB - deliveryPartnerPayoutETB
+    customerDeliveryFeeETB - herbizDeliveryMarginETB
   );
 
   return {
@@ -42,6 +47,7 @@ export function calculateOrderFinancials(
     herbizCommissionETB,
     sellerNetEarningsETB,
     customerDeliveryFeeETB,
+    deliveryMarginRate,
     deliveryPartnerPayoutETB,
     herbizDeliveryMarginETB,
     totalCustomerPayableETB: subtotalETB + customerDeliveryFeeETB,
@@ -79,16 +85,21 @@ export function summarizeOrdersFinancials(
 
       const commission = Math.round(order.subtotalETB * effectiveRate);
       const sellerNet = Math.max(0, order.subtotalETB - commission);
-      const deliveryMargin = Math.max(
-        0,
-        order.deliveryFeeETB - order.deliveryPartnerPayoutETB
-      );
+
+      const deliveryMargin =
+        !order.adminCompleted && currentSettings
+          ? Math.round(
+              order.deliveryFeeETB *
+                Math.max(0, Math.min(1, currentSettings.deliveryMarginRate ?? 0.15))
+            )
+          : Math.max(0, order.deliveryFeeETB - order.deliveryPartnerPayoutETB);
+      const partnerPayout = Math.max(0, order.deliveryFeeETB - deliveryMargin);
 
       acc.grossMerchandiseSalesETB += order.subtotalETB;
       acc.totalCustomerBilledETB += order.totalETB;
       acc.totalHerbizCommissionETB += commission;
       acc.totalDeliveryFeesCollectedETB += order.deliveryFeeETB;
-      acc.totalDeliveryPartnerPayoutsETB += order.deliveryPartnerPayoutETB;
+      acc.totalDeliveryPartnerPayoutsETB += partnerPayout;
       acc.totalHerbizDeliveryMarginETB += deliveryMargin;
       acc.totalHerbizRevenueETB += commission + deliveryMargin;
       acc.totalSellerNetEarningsETB += sellerNet;

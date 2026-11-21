@@ -373,10 +373,10 @@ export function LandingPage() {
               <div className="rounded-xl border border-[#E5E5DC] bg-[#FAFAF5] p-6">
                 <p className="text-xs font-medium text-[#4B5563]">Delivery Margin</p>
                 <p className="mt-2 font-mono text-3xl font-bold text-[#B45309] tabular-nums">
-                  15 ETB
+                  15%
                 </p>
                 <p className="mt-1 text-sm text-[#1F2937]">
-                  Sustainable platform logistics unit margin
+                  Sustainable platform logistics margin per delivery
                 </p>
               </div>
             </div>
