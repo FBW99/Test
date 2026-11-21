@@ -42,10 +42,10 @@ export function DeliveryDashboard() {
         />
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               Ready for Dispatch, {currentUser?.fullName.split(" ")[0]}
             </h1>
-            <p className="mt-1 text-sm text-[#4B5563]">
+            <p className="mt-1 text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Vehicle: {currentUser?.vehicleType || "Herbiz Courier"} · View assigned pickups and update live delivery progress.
             </p>
           </div>
@@ -59,11 +59,11 @@ export function DeliveryDashboard() {
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Assigned Trips</span>
-              <Truck className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <Truck className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {myDeliveries.length}
             </p>
           </CardContent>
@@ -71,11 +71,11 @@ export function DeliveryDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Pending Pickups</span>
-              <Package className="h-4 w-4 text-[#B45309]" aria-hidden="true" />
+              <Package className="h-4 w-4 text-[#B45309] dark:text-[#FBBF24]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] dark:text-[#FBBF24] tabular-nums">
               {pendingPickups.length}
             </p>
           </CardContent>
@@ -83,8 +83,8 @@ export function DeliveryDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">In Progress</p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#0F766E] tabular-nums">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">In Progress</p>
+            <p className="mt-2 font-mono text-2xl font-bold text-[#0F766E] dark:text-[#2DD4BF] tabular-nums">
               {inProgress.length}
             </p>
           </CardContent>
@@ -92,14 +92,14 @@ export function DeliveryDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Completed Drops</span>
-              <CheckCircle2 className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <CheckCircle2 className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
               {completed.length}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280] font-mono tabular-nums">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990] font-mono tabular-nums">
               Earned: {formatETB(totalDriverPayout)}
             </p>
           </CardContent>
@@ -111,7 +111,7 @@ export function DeliveryDashboard() {
           <CardTitle className="text-base">Active Queue</CardTitle>
           <Link
             to="/delivery/assignments"
-            className="inline-flex items-center gap-1 text-xs font-medium text-[#166534] hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-medium text-[#166534] dark:text-[#4ADE80] hover:underline whitespace-nowrap shrink-0"
           >
             <span>Manage trips</span>
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -119,27 +119,27 @@ export function DeliveryDashboard() {
         </CardHeader>
         <CardContent>
           {activeList.length === 0 ? (
-            <p className="text-sm text-[#6B7280] py-4">
+            <p className="text-sm text-[#6B7280] dark:text-[#8A9990] py-4">
               No active deliveries right now. New assignments from Herbiz Admin appear here automatically.
             </p>
           ) : (
-            <div className="divide-y divide-[#F2F2EA]">
+            <div className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22]">
               {activeList.map((order) => (
                 <div
                   key={order.id}
                   className="py-3 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
                 >
                   <div>
-                    <p className="font-mono text-sm font-semibold text-[#1F2937]">
+                    <p className="font-mono text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                       {order.id} · {order.customerName}
                     </p>
-                    <p className="text-xs text-[#6B7280]">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                       Drop-off: {order.deliveryAddress}, {order.city}
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
                     <StatusText status={order.deliveryStatus} />
-                    <span className="font-mono text-sm font-semibold text-[#166534] tabular-nums">
+                    <span className="font-mono text-sm font-semibold text-[#166534] dark:text-[#4ADE80] tabular-nums">
                       {formatETB(order.deliveryPartnerPayoutETB)}
                     </span>
                   </div>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -22,6 +23,13 @@
     scroll-behavior: smooth;
     background-color: #FAFAF5;
     color: #1F2937;
+    color-scheme: light;
+  }
+
+  html.dark {
+    background-color: #0B110D;
+    color: #F1F5F2;
+    color-scheme: dark;
   }
 
   h1, h2, h3, h4, .font-display {

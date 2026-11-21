@@ -75,25 +75,25 @@ export function ShopPage() {
         />
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               Herbiz Marketplace
             </h1>
-            <p className="text-sm text-[#4B5563]">
+            <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Approved artisan creations managed from workshop to doorstep.
             </p>
           </div>
-          <p className="text-xs font-medium text-[#6B7280] tabular-nums">
+          <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990] tabular-nums">
             Showing {filteredProducts.length} product(s)
           </p>
         </div>
       </div>
 
       {/* Filters Toolbar */}
-      <div className="space-y-4 rounded-xl border border-[#E5E5DC] bg-white p-4">
+      <div className="space-y-4 rounded-xl border border-[#E5E5DC] bg-white p-4 dark:border-[#243329] dark:bg-[#121A15]">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="relative flex-1">
             <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280]"
+              className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280] dark:text-[#8A9990]"
               aria-hidden="true"
             />
             <Input
@@ -129,8 +129,8 @@ export function ShopPage() {
               className={cn(
                 "rounded-lg px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap",
                 selectedCategory === cat
-                  ? "bg-[#166534] text-white"
-                  : "bg-[#FAFAF5] text-[#4B5563] hover:bg-[#F2F2EA] hover:text-[#1F2937]"
+                  ? "bg-[#166534] text-white dark:bg-[#15803D]"
+                  : "bg-[#FAFAF5] text-[#4B5563] hover:bg-[#F2F2EA] hover:text-[#1F2937] dark:bg-[#0F1612] dark:text-[#B4C2B9] dark:hover:bg-[#18231C] dark:hover:text-[#F1F5F2]"
               )}
             >
               {cat}

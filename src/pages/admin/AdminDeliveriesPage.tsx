@@ -77,10 +77,10 @@ export function AdminDeliveriesPage() {
             { label: "Delivery Management" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Delivery Partners & Dispatch
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Assign couriers to ready orders, monitor transit updates, and confirm completed deliveries.
         </p>
       </div>
@@ -104,21 +104,21 @@ export function AdminDeliveriesPage() {
             <Card key={driver.id}>
               <CardContent className="p-5 flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-semibold text-[#1F2937]">
+                  <p className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                     {driver.fullName}
                   </p>
-                  <p className="text-xs text-[#6B7280]">
+                  <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                     @{driver.username} · {driver.vehicleType || "Courier"}
                   </p>
-                  <p className="text-xs font-mono text-[#4B5563] mt-1">
+                  <p className="text-xs font-mono text-[#4B5563] dark:text-[#B4C2B9] mt-1">
                     {driver.phone}
                   </p>
                 </div>
                 <div className="text-right font-mono text-xs tabular-nums">
-                  <p className="font-semibold text-[#166534]">
+                  <p className="font-semibold text-[#166534] dark:text-[#4ADE80]">
                     {activeCount} active
                   </p>
-                  <p className="text-[#6B7280]">{completedCount} delivered</p>
+                  <p className="text-[#6B7280] dark:text-[#8A9990]">{completedCount} delivered</p>
                 </div>
               </CardContent>
             </Card>
@@ -129,7 +129,7 @@ export function AdminDeliveriesPage() {
       <Card>
         <CardHeader>
           <CardTitle className="text-base flex items-center gap-2">
-            <Truck className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+            <Truck className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             <span>Delivery Dispatch Queue</span>
           </CardTitle>
         </CardHeader>
@@ -149,14 +149,14 @@ export function AdminDeliveriesPage() {
             <TableBody>
               {activeDeliveries.map((order) => (
                 <TableRow key={order.id}>
-                  <TableCell className="font-mono font-semibold text-[#166534]">
+                  <TableCell className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80]">
                     {order.id}
                   </TableCell>
                   <TableCell>
-                    <p className="text-sm font-medium text-[#1F2937]">
+                    <p className="text-sm font-medium text-[#1F2937] dark:text-[#F1F5F2]">
                       {order.customerName}
                     </p>
-                    <p className="text-xs text-[#6B7280] max-w-[200px] truncate">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990] max-w-[200px] truncate">
                       {order.deliveryAddress}, {order.city}
                     </p>
                   </TableCell>
@@ -165,7 +165,7 @@ export function AdminDeliveriesPage() {
                   </TableCell>
                   <TableCell className="text-sm">
                     {order.deliveryPartnerName || (
-                      <span className="text-[#9CA3AF]">Unassigned</span>
+                      <span className="text-[#9CA3AF] dark:text-[#6B7280]">Unassigned</span>
                     )}
                   </TableCell>
                   <TableCell>

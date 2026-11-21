@@ -112,14 +112,14 @@ export function AdminProductsPage() {
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               Product Quality & Publishing
             </h1>
-            <p className="text-sm text-[#4B5563]">
+            <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Only approved products appear in the public customer marketplace.
             </p>
           </div>
-          <div className="flex items-center gap-1 p-1 rounded-lg border border-[#E5E5DC] bg-white self-start">
+          <div className="flex items-center gap-1 p-1 rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-white dark:bg-[#121A15] self-start">
             {(["all", "pending", "approved", "rejected"] as const).map((tab) => (
               <button
                 key={tab}
@@ -128,8 +128,8 @@ export function AdminProductsPage() {
                 className={cn(
                   "px-3 py-1.5 text-xs font-medium rounded-md capitalize cursor-pointer transition-colors",
                   filter === tab
-                    ? "bg-[#166534] text-white"
-                    : "text-[#4B5563] hover:text-[#1F2937]"
+                    ? "bg-[#166534] dark:bg-[#1E7A40] text-white"
+                    : "text-[#4B5563] dark:text-[#B4C2B9] hover:text-[#1F2937] dark:hover:text-[#F1F5F2]"
                 )}
               >
                 {tab}
@@ -157,22 +157,22 @@ export function AdminProductsPage() {
               <TableRow key={p.id}>
                 <TableCell>
                   <div className="flex items-center gap-3">
-                    <div className="h-11 w-14 shrink-0 overflow-hidden rounded-md bg-[#F2F2EA]">
+                    <div className="h-11 w-14 shrink-0 overflow-hidden rounded-md bg-[#F2F2EA] dark:bg-[#18231C]">
                       <SafeImage
                         src={p.imageUrl}
                         alt={p.name}
                         className="h-full w-full"
                       />
                     </div>
-                    <span className="font-semibold text-[#1F2937] max-w-[200px] truncate">
+                    <span className="font-semibold text-[#1F2937] dark:text-[#F1F5F2] max-w-[200px] truncate">
                       {p.name}
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="text-xs text-[#4B5563]">
+                <TableCell className="text-xs text-[#4B5563] dark:text-[#B4C2B9]">
                   {p.category}
                 </TableCell>
-                <TableCell className="text-xs text-[#6B7280] max-w-[160px] truncate">
+                <TableCell className="text-xs text-[#6B7280] dark:text-[#8A9990] max-w-[160px] truncate">
                   {p.sellerWorkshopLabel}
                 </TableCell>
                 <TableCell className="text-right font-mono font-semibold tabular-nums">
@@ -223,7 +223,7 @@ export function AdminProductsPage() {
                       size="sm"
                       variant="ghost"
                       aria-label={`Remove ${p.name}`}
-                      className="text-[#B91C1C]"
+                      className="text-[#B91C1C] dark:text-[#F87171]"
                       onClick={() => setDeletingId(p.id)}
                     >
                       <Trash2 className="h-3.5 w-3.5" />
@@ -246,7 +246,7 @@ export function AdminProductsPage() {
             <DialogTitle>Reject Product Submission</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleRejectConfirm} className="space-y-4">
-            <p className="text-sm text-[#4B5563]">
+            <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Explain what {rejecting?.name} needs before publishing so the entrepreneur can fix and resubmit.
             </p>
             <div className="space-y-1.5">

@@ -21,11 +21,11 @@ export function SafeImage({
     return (
       <div
         className={cn(
-          "flex flex-col items-center justify-center gap-2 bg-[#F2F2EA] text-[#4B5563] p-4 text-center",
+          "flex flex-col items-center justify-center gap-2 bg-[#F2F2EA] text-[#4B5563] dark:bg-[#18231C] dark:text-[#B4C2B9] p-4 text-center",
           className
         )}
       >
-        <Package className="h-7 w-7 text-[#166534]/70" aria-hidden="true" />
+        <Package className="h-7 w-7 text-[#166534]/70 dark:text-[#4ADE80]/70" aria-hidden="true" />
         <span className="text-xs font-medium line-clamp-2 max-w-[180px]">
           {fallbackTitle || alt}
         </span>

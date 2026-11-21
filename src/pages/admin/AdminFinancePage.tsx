@@ -72,10 +72,10 @@ export function AdminFinancePage() {
             { label: "Revenue & Commissions" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Financial Management & Unit Economics
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Separate Gross Sales Value from Herbiz Revenue (Commission + Delivery Margin). Changes update active estimates immediately.
         </p>
       </div>
@@ -84,13 +84,13 @@ export function AdminFinancePage() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               Gross Merchandise Sales
             </p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {formatETB(summary.grossMerchandiseSalesETB)}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280]">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990]">
               Total product value sold
             </p>
           </CardContent>
@@ -98,13 +98,13 @@ export function AdminFinancePage() {
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               Herbiz Net Revenue
             </p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
               {formatETB(summary.totalHerbizRevenueETB)}
             </p>
-            <p className="mt-1 text-xs text-[#4B5563] tabular-nums">
+            <p className="mt-1 text-xs text-[#4B5563] dark:text-[#B4C2B9] tabular-nums">
               {formatETB(summary.totalHerbizCommissionETB)} comm. +{" "}
               {formatETB(summary.totalHerbizDeliveryMarginETB)} delivery margin
             </p>
@@ -113,13 +113,13 @@ export function AdminFinancePage() {
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               Seller Net Earnings
             </p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {formatETB(summary.totalSellerNetEarningsETB)}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280]">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990]">
               Payable to women makers
             </p>
           </CardContent>
@@ -127,13 +127,13 @@ export function AdminFinancePage() {
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               Delivery Partner Payouts
             </p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] dark:text-[#FBBF24] tabular-nums">
               {formatETB(summary.totalDeliveryPartnerPayoutsETB)}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280] tabular-nums">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990] tabular-nums">
               Out of {formatETB(summary.totalDeliveryFeesCollectedETB)} collected
             </p>
           </CardContent>
@@ -228,7 +228,7 @@ export function AdminFinancePage() {
 
                 return (
                   <TableRow key={o.id}>
-                    <TableCell className="font-mono font-semibold text-[#166534]">
+                    <TableCell className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80]">
                       {o.id}
                     </TableCell>
                     <TableCell className="text-right font-mono tabular-nums">
@@ -246,7 +246,7 @@ export function AdminFinancePage() {
                     <TableCell className="text-right font-mono tabular-nums">
                       {formatETB(partnerPayout)}
                     </TableCell>
-                    <TableCell className="text-right font-mono font-bold text-[#166534] tabular-nums">
+                    <TableCell className="text-right font-mono font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
                       {formatETB(herbizRev)}
                     </TableCell>
                   </TableRow>

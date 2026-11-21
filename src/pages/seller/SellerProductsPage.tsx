@@ -71,10 +71,10 @@ export function SellerProductsPage() {
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               My Products
             </h1>
-            <p className="text-sm text-[#4B5563]">
+            <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Products approved by Herbiz are automatically published to shoppers.
             </p>
           </div>
@@ -97,7 +97,7 @@ export function SellerProductsPage() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {myProducts.map((product) => (
             <Card key={product.id} className="overflow-hidden flex flex-col">
-              <div className="aspect-[4/3] w-full bg-[#F2F2EA]">
+              <div className="aspect-[4/3] w-full bg-[#F2F2EA] dark:bg-[#18231C]">
                 <SafeImage
                   src={product.imageUrl}
                   alt={product.name}
@@ -107,7 +107,7 @@ export function SellerProductsPage() {
               </div>
               <CardContent className="p-4 flex-1 flex flex-col space-y-3">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs text-[#6B7280] truncate">
+                  <span className="text-xs text-[#6B7280] dark:text-[#8A9990] truncate">
                     {product.category}
                   </span>
                   <StatusText
@@ -118,22 +118,22 @@ export function SellerProductsPage() {
                   />
                 </div>
 
-                <h2 className="font-display text-base font-semibold text-[#1F2937] line-clamp-2">
+                <h2 className="font-display text-base font-semibold text-[#1F2937] dark:text-[#F1F5F2] line-clamp-2">
                   {product.name}
                 </h2>
 
                 {product.status === "rejected" && product.rejectionReason && (
-                  <p className="rounded-lg bg-[#FEF2F2] px-3 py-2 text-xs text-[#B91C1C]">
+                  <p className="rounded-lg bg-[#FEF2F2] dark:bg-[#2A1215] px-3 py-2 text-xs text-[#B91C1C] dark:text-[#FCA5A5]">
                     Review note: {product.rejectionReason}
                   </p>
                 )}
 
-                <div className="mt-auto pt-3 border-t border-[#F2F2EA] flex items-center justify-between">
+                <div className="mt-auto pt-3 border-t border-[#F2F2EA] dark:border-[#1D2A22] flex items-center justify-between">
                   <div>
-                    <p className="font-mono text-sm font-bold text-[#1F2937] tabular-nums">
+                    <p className="font-mono text-sm font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
                       {formatETB(product.priceETB)}
                     </p>
-                    <p className="text-xs text-[#6B7280] tabular-nums">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990] tabular-nums">
                       Stock: {product.stock}
                     </p>
                   </div>
@@ -152,7 +152,7 @@ export function SellerProductsPage() {
                       variant="ghost"
                       aria-label={`Delete ${product.name}`}
                       onClick={() => setDeletingId(product.id)}
-                      className="text-[#B91C1C] hover:bg-[#FEF2F2]"
+                      className="text-[#B91C1C] dark:text-[#F87171] hover:bg-[#FEF2F2] dark:hover:bg-[#2A1215]"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </Button>

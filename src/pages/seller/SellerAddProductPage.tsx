@@ -119,10 +119,10 @@ export function SellerAddProductPage() {
             { label: "Add Product" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Submit a New Product
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Herbiz reviews every submission for quality before making it live to shoppers.
         </p>
       </div>
@@ -212,8 +212,8 @@ export function SellerAddProductPage() {
                     onClick={() => setImageUrl(preset.url)}
                     className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium cursor-pointer transition-colors ${
                       imageUrl === preset.url
-                        ? "border-[#166534] bg-[#166534] text-white"
-                        : "border-[#E5E5DC] bg-[#FAFAF5] text-[#4B5563] hover:text-[#1F2937]"
+                        ? "border-[#166534] bg-[#166534] text-white dark:border-[#22C55E] dark:bg-[#1E7A40]"
+                        : "border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] text-[#4B5563] dark:text-[#B4C2B9] hover:text-[#1F2937] dark:hover:text-[#F1F5F2]"
                     }`}
                   >
                     {preset.label}
@@ -221,8 +221,8 @@ export function SellerAddProductPage() {
                 ))}
               </div>
               <div className="flex items-center gap-3 pt-1">
-                <label className="inline-flex items-center gap-2 rounded-lg border border-[#E5E5DC] bg-white px-3 py-2 text-xs font-medium text-[#1F2937] hover:bg-[#FAFAF5] cursor-pointer">
-                  <Upload className="h-3.5 w-3.5 text-[#166534]" aria-hidden="true" />
+                <label className="inline-flex items-center gap-2 rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-white dark:bg-[#121A15] px-3 py-2 text-xs font-medium text-[#1F2937] dark:text-[#F1F5F2] hover:bg-[#FAFAF5] dark:hover:bg-[#18231C] cursor-pointer">
+                  <Upload className="h-3.5 w-3.5 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
                   <span>Upload Image File</span>
                   <input
                     type="file"
@@ -231,7 +231,7 @@ export function SellerAddProductPage() {
                     className="sr-only"
                   />
                 </label>
-                <span className="text-xs text-[#6B7280]">
+                <span className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                   or select a sample studio photo above
                 </span>
               </div>
@@ -245,7 +245,7 @@ export function SellerAddProductPage() {
               <CardTitle className="text-base">Preview & Earnings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="aspect-[4/3] overflow-hidden rounded-lg border border-[#E5E5DC] bg-[#F2F2EA]">
+              <div className="aspect-[4/3] overflow-hidden rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#F2F2EA] dark:bg-[#18231C]">
                 <SafeImage
                   src={imageUrl}
                   alt={name || "Product preview"}
@@ -253,14 +253,14 @@ export function SellerAddProductPage() {
                 />
               </div>
 
-              <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-2 text-sm">
-                <div className="flex justify-between text-[#4B5563]">
+              <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 space-y-2 text-sm">
+                <div className="flex justify-between text-[#4B5563] dark:text-[#B4C2B9]">
                   <span>Customer Price</span>
-                  <span className="font-mono font-semibold text-[#1F2937] tabular-nums">
+                  <span className="font-mono font-semibold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
                     {formatETB(numericPrice)}
                   </span>
                 </div>
-                <div className="flex justify-between text-[#4B5563]">
+                <div className="flex justify-between text-[#4B5563] dark:text-[#B4C2B9]">
                   <span>
                     Herbiz Fee ({Math.round(financeSettings.commissionRate * 100)}%)
                   </span>
@@ -268,7 +268,7 @@ export function SellerAddProductPage() {
                     -{formatETB(commissionAmt)}
                   </span>
                 </div>
-                <div className="flex justify-between font-bold text-[#166534] pt-2 border-t border-[#E5E5DC]">
+                <div className="flex justify-between font-bold text-[#166534] dark:text-[#4ADE80] pt-2 border-t border-[#E5E5DC] dark:border-[#243329]">
                   <span>Your Earnings Per Sale</span>
                   <span className="font-mono tabular-nums">
                     {formatETB(netPerItem)}

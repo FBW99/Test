@@ -26,17 +26,17 @@ export function ForgotPasswordPage() {
     <div className="mx-auto max-w-md px-4 py-14 sm:px-6">
       <Card>
         <CardHeader>
-          <CardTitle>Reset Password (Demo)</CardTitle>
+          <CardTitle>Reset Your Password</CardTitle>
           <CardDescription>
-            Enter your account email or username to simulate a password reset link.
+            Enter your email address or username and we'll send recovery instructions.
           </CardDescription>
         </CardHeader>
         <CardContent>
           {submitted ? (
             <div className="space-y-4 text-center py-4">
-              <CheckCircle2 className="h-10 w-10 text-[#166534] mx-auto" />
-              <p className="text-sm text-[#1F2937]">
-                If an account matches <span className="font-semibold">{email}</span>, a demo recovery instruction has been simulated. You may return to Sign In and use any demonstration credentials.
+              <CheckCircle2 className="h-10 w-10 text-[#166534] dark:text-[#4ADE80] mx-auto" />
+              <p className="text-sm text-[#1F2937] dark:text-[#F1F5F2]">
+                If an account matches <span className="font-semibold">{email}</span>, recovery instructions are on the way. You can return to Sign In anytime.
               </p>
               <Link to="/login" className="inline-block w-full">
                 <Button className="w-full">Back to Login</Button>
@@ -60,7 +60,7 @@ export function ForgotPasswordPage() {
               <div className="text-center">
                 <Link
                   to="/login"
-                  className="text-sm font-medium text-[#166534] hover:underline"
+                  className="text-sm font-medium text-[#166534] dark:text-[#4ADE80] hover:underline"
                 >
                   Return to Sign In
                 </Link>

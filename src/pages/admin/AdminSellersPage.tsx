@@ -63,10 +63,10 @@ export function AdminSellersPage() {
             { label: "Seller Management" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Women Entrepreneurs & Workshops
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Approve new seller registrations, inspect product catalogs, or manage workshop status.
         </p>
       </div>
@@ -92,10 +92,10 @@ export function AdminSellersPage() {
               return (
                 <TableRow key={seller.id}>
                   <TableCell>
-                    <p className="font-semibold text-[#1F2937]">
+                    <p className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                       {seller.fullName}
                     </p>
-                    <p className="text-xs text-[#6B7280] font-mono">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990] font-mono">
                       @{seller.username} · {seller.phone}
                     </p>
                   </TableCell>
@@ -106,7 +106,7 @@ export function AdminSellersPage() {
                   <TableCell className="font-mono text-sm tabular-nums">
                     {count}
                   </TableCell>
-                  <TableCell className="text-xs text-[#6B7280]">
+                  <TableCell className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                     {formatShortDate(seller.joinedAt)}
                   </TableCell>
                   <TableCell>
@@ -147,7 +147,7 @@ export function AdminSellersPage() {
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="text-[#B91C1C]"
+                          className="text-[#B91C1C] dark:text-[#F87171]"
                           onClick={() =>
                             handleStatusChange(seller, "suspended")
                           }
@@ -180,36 +180,36 @@ export function AdminSellersPage() {
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-4 text-sm">
-                <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-1.5">
+                <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 space-y-1.5">
                   <p>
-                    <span className="text-[#6B7280]">Owner:</span>{" "}
-                    <span className="font-medium">{selectedSeller.fullName}</span>
+                    <span className="text-[#6B7280] dark:text-[#8A9990]">Owner:</span>{" "}
+                    <span className="font-medium text-[#1F2937] dark:text-[#F1F5F2]">{selectedSeller.fullName}</span>
                   </p>
                   <p>
-                    <span className="text-[#6B7280]">Contact:</span>{" "}
+                    <span className="text-[#6B7280] dark:text-[#8A9990]">Contact:</span>{" "}
                     {selectedSeller.phone} · {selectedSeller.email}
                   </p>
                   <p>
-                    <span className="text-[#6B7280]">Location:</span>{" "}
+                    <span className="text-[#6B7280] dark:text-[#8A9990]">Location:</span>{" "}
                     {selectedSeller.address || "—"}, {selectedSeller.city}
                   </p>
                   {selectedSeller.businessBio && (
-                    <p className="pt-1 text-[#4B5563]">
+                    <p className="pt-1 text-[#4B5563] dark:text-[#B4C2B9]">
                       {selectedSeller.businessBio}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <h4 className="font-display font-semibold text-[#1F2937] mb-2">
+                  <h4 className="font-display font-semibold text-[#1F2937] dark:text-[#F1F5F2] mb-2">
                     Submitted Products ({sellerProducts.length})
                   </h4>
                   {sellerProducts.length === 0 ? (
-                    <p className="text-xs text-[#6B7280]">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                       No products submitted yet.
                     </p>
                   ) : (
-                    <div className="divide-y divide-[#F2F2EA] border border-[#E5E5DC] rounded-lg">
+                    <div className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22] border border-[#E5E5DC] dark:border-[#243329] rounded-lg">
                       {sellerProducts.map((p) => (
                         <div
                           key={p.id}

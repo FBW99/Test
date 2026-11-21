@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/ca
 import { useAuth } from "@/src/context/AuthContext";
 import { useMarketplace } from "@/src/context/MarketplaceContext";
 import { useOrders } from "@/src/context/OrderContext";
+import { useTheme } from "@/src/context/ThemeContext";
 import { PRODUCT_CATEGORIES } from "@/src/data/seedData";
 import { summarizeOrdersFinancials } from "@/src/services/calculations";
 import { formatETB } from "@/src/lib/utils";
@@ -32,6 +33,18 @@ export function AdminAnalyticsPage() {
   const { users } = useAuth();
   const { products, financeSettings } = useMarketplace();
   const { orders } = useOrders();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
+  const chartGridColor = isDark ? "#243329" : "#E5E5DC";
+  const chartTickColor = isDark ? "#8A9990" : "#6B7280";
+  const tooltipStyle = {
+    backgroundColor: isDark ? "#121A15" : "#FFFFFF",
+    border: `1px solid ${isDark ? "#243329" : "#E5E5DC"}`,
+    borderRadius: "8px",
+    color: isDark ? "#F1F5F2" : "#1F2937",
+    fontSize: "12px",
+  };
 
   const summary = summarizeOrdersFinancials(orders, financeSettings);
 
@@ -93,10 +106,10 @@ export function AdminAnalyticsPage() {
             { label: "Business Analytics" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Marketplace Analytics
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Sales momentum, Herbiz revenue growth, category mix, seller output, and delivery throughput.
         </p>
       </div>
@@ -113,14 +126,17 @@ export function AdminAnalyticsPage() {
             <div className="h-72 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={monthlyData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E5DC" />
-                  <XAxis dataKey="month" tick={{ fontSize: 12 }} />
-                  <YAxis tick={{ fontSize: 12 }} />
-                  <Tooltip />
+                  <CartesianGrid strokeDasharray="3 3" stroke={chartGridColor} />
+                  <XAxis dataKey="month" tick={{ fontSize: 12, fill: chartTickColor }} stroke={chartGridColor} />
+                  <YAxis tick={{ fontSize: 12, fill: chartTickColor }} stroke={chartGridColor} />
+                  <Tooltip
+                    contentStyle={tooltipStyle}
+                    cursor={{ fill: isDark ? "rgba(74, 222, 128, 0.08)" : "rgba(22, 101, 52, 0.06)" }}
+                  />
                   <Bar
                     dataKey="sales"
                     name="Gross Sales (ETB)"
-                    fill="#166534"
+                    fill={isDark ? "#22C55E" : "#166534"}
                     radius={[6, 6, 0, 0]}
                   />
                   <Bar
@@ -163,7 +179,7 @@ export function AdminAnalyticsPage() {
                       />
                     ))}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip contentStyle={tooltipStyle} itemStyle={{ color: isDark ? "#F1F5F2" : "#1F2937" }} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -176,7 +192,7 @@ export function AdminAnalyticsPage() {
                       backgroundColor: CHART_COLORS[idx % CHART_COLORS.length],
                     }}
                   />
-                  <span className="truncate text-[#4B5563]">
+                  <span className="truncate text-[#4B5563] dark:text-[#B4C2B9]">
                     {c.name} ({c.count})
                   </span>
                 </div>
@@ -192,19 +208,19 @@ export function AdminAnalyticsPage() {
           <CardHeader>
             <CardTitle className="text-base">Seller Sales Performance</CardTitle>
           </CardHeader>
-          <CardContent className="divide-y divide-[#F2F2EA]">
+          <CardContent className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22]">
             {sellerPerformance.map((sp) => (
               <div
                 key={sp.name}
                 className="py-3 first:pt-0 last:pb-0 flex items-center justify-between text-sm"
               >
                 <div>
-                  <p className="font-semibold text-[#1F2937]">{sp.name}</p>
-                  <p className="text-xs text-[#6B7280] tabular-nums">
+                  <p className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">{sp.name}</p>
+                  <p className="text-xs text-[#6B7280] dark:text-[#8A9990] tabular-nums">
                     {sp.itemsSold} unit(s) ordered
                   </p>
                 </div>
-                <span className="font-mono font-semibold text-[#166534] tabular-nums">
+                <span className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80] tabular-nums">
                   {formatETB(sp.salesETB)}
                 </span>
               </div>
@@ -216,19 +232,19 @@ export function AdminAnalyticsPage() {
           <CardHeader>
             <CardTitle className="text-base">Delivery Partner Performance</CardTitle>
           </CardHeader>
-          <CardContent className="divide-y divide-[#F2F2EA]">
+          <CardContent className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22]">
             {deliveryPerformance.map((dp) => (
               <div
                 key={dp.name}
                 className="py-3 first:pt-0 last:pb-0 flex items-center justify-between text-sm"
               >
                 <div>
-                  <p className="font-semibold text-[#1F2937]">{dp.name}</p>
-                  <p className="text-xs text-[#6B7280] tabular-nums">
+                  <p className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">{dp.name}</p>
+                  <p className="text-xs text-[#6B7280] dark:text-[#8A9990] tabular-nums">
                     {dp.assigned} total assignments
                   </p>
                 </div>
-                <span className="font-mono font-semibold text-[#166534] tabular-nums">
+                <span className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80] tabular-nums">
                   {dp.delivered} delivered
                 </span>
               </div>

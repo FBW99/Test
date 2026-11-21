@@ -31,7 +31,7 @@ export function DeliveryProfilePage() {
             { label: "Partner Profile" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Delivery Partner Profile
         </h1>
       </div>

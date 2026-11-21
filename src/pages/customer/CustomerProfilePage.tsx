@@ -38,7 +38,7 @@ export function CustomerProfilePage() {
             { label: "Profile" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           My Profile
         </h1>
       </div>
@@ -107,32 +107,32 @@ export function CustomerProfilePage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {myInquiries.length === 0 ? (
-              <p className="text-sm text-[#6B7280]">
+              <p className="text-sm text-[#6B7280] dark:text-[#8A9990]">
                 Questions you send from product or order pages appear here along with Herbiz team replies.
               </p>
             ) : (
               myInquiries.map((inq) => (
                 <div
                   key={inq.id}
-                  className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-2"
+                  className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-2 dark:border-[#243329] dark:bg-[#0F1612]"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-sm font-semibold text-[#1F2937]">
+                    <span className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                       {inq.subject}
                     </span>
                     <StatusText status={inq.status} />
                   </div>
-                  <p className="text-xs text-[#6B7280]">
+                  <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                     {formatShortDate(inq.createdAt)}
                     {inq.orderId ? ` · Order ${inq.orderId}` : ""}
                   </p>
-                  <p className="text-sm text-[#4B5563]">{inq.message}</p>
+                  <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">{inq.message}</p>
                   {inq.adminReply && (
-                    <div className="mt-2 rounded-md border border-[#166534]/20 bg-white p-3">
-                      <p className="text-xs font-semibold text-[#166534]">
+                    <div className="mt-2 rounded-md border border-[#166534]/20 bg-white p-3 dark:border-[#4ADE80]/20 dark:bg-[#121A15]">
+                      <p className="text-xs font-semibold text-[#166534] dark:text-[#4ADE80]">
                         Herbiz Team Reply:
                       </p>
-                      <p className="mt-0.5 text-sm text-[#1F2937]">
+                      <p className="mt-0.5 text-sm text-[#1F2937] dark:text-[#F1F5F2]">
                         {inq.adminReply}
                       </p>
                     </div>

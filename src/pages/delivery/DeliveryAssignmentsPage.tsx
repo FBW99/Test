@@ -57,10 +57,10 @@ export function DeliveryAssignmentsPage() {
             { label: "Assigned Deliveries" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Assigned Deliveries
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Follow pickup instructions from Herbiz, collect parcels, and confirm doorstep delivery.
         </p>
       </div>
@@ -76,56 +76,56 @@ export function DeliveryAssignmentsPage() {
           {activeTrips.map((order) => (
             <Card key={order.id}>
               <CardContent className="p-5 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F2F2EA] pb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F2F2EA] dark:border-[#1D2A22] pb-3">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-lg font-bold text-[#166534]">
+                    <span className="font-mono text-lg font-bold text-[#166534] dark:text-[#4ADE80]">
                       {order.id}
                     </span>
                     <StatusText status={order.deliveryStatus} />
                   </div>
-                  <div className="text-sm font-mono font-semibold text-[#1F2937] tabular-nums">
+                  <div className="text-sm font-mono font-semibold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
                     Delivery Partner Fee: {formatETB(order.deliveryPartnerPayoutETB)}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 text-sm">
-                  <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-2">
-                    <p className="text-xs font-semibold text-[#6B7280]">
+                  <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 space-y-2">
+                    <p className="text-xs font-semibold text-[#6B7280] dark:text-[#8A9990]">
                       Customer Delivery Location
                     </p>
-                    <p className="font-semibold text-[#1F2937]">
+                    <p className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                       {order.customerName}
                     </p>
-                    <p className="flex items-start gap-1.5 text-[#4B5563]">
-                      <MapPin className="h-4 w-4 text-[#166534] shrink-0 mt-0.5" aria-hidden="true" />
+                    <p className="flex items-start gap-1.5 text-[#4B5563] dark:text-[#B4C2B9]">
+                      <MapPin className="h-4 w-4 text-[#166534] dark:text-[#4ADE80] shrink-0 mt-0.5" aria-hidden="true" />
                       <span>
                         {order.deliveryAddress}, {order.city}
                       </span>
                     </p>
-                    <p className="flex items-center gap-1.5 font-mono text-xs text-[#1F2937]">
-                      <Phone className="h-3.5 w-3.5 text-[#166534]" aria-hidden="true" />
+                    <p className="flex items-center gap-1.5 font-mono text-xs text-[#1F2937] dark:text-[#F1F5F2]">
+                      <Phone className="h-3.5 w-3.5 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
                       <span>{order.customerPhone}</span>
                     </p>
                     {order.paymentMethod === "Cash on Delivery" && (
-                      <p className="pt-1 text-xs font-semibold text-[#B45309] font-mono tabular-nums">
+                      <p className="pt-1 text-xs font-semibold text-[#B45309] dark:text-[#FBBF24] font-mono tabular-nums">
                         Collect Cash on Delivery: {formatETB(order.totalETB)}
                       </p>
                     )}
                   </div>
 
-                  <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-2">
-                    <p className="text-xs font-semibold text-[#6B7280]">
+                  <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 space-y-2">
+                    <p className="text-xs font-semibold text-[#6B7280] dark:text-[#8A9990]">
                       Package & Herbiz Pickup Instructions
                     </p>
-                    <ul className="space-y-1 text-sm text-[#1F2937]">
+                    <ul className="space-y-1 text-sm text-[#1F2937] dark:text-[#F1F5F2]">
                       {order.items.map((item) => (
                         <li key={item.id}>
                           {item.quantity} × {item.productName}
                         </li>
                       ))}
                     </ul>
-                    <p className="pt-1 text-xs text-[#4B5563]">
-                      <span className="font-semibold text-[#1F2937]">
+                    <p className="pt-1 text-xs text-[#4B5563] dark:text-[#B4C2B9]">
+                      <span className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                         Pickup Note:
                       </span>{" "}
                       {order.pickupInstructions ||
@@ -191,7 +191,7 @@ export function DeliveryAssignmentsPage() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-[#B91C1C] hover:bg-[#FEF2F2]"
+                    className="text-[#B91C1C] dark:text-[#F87171] hover:bg-[#FEF2F2] dark:hover:bg-[#2A1215]"
                     onClick={() => {
                       setFailingOrder(order);
                       setFailReason("");

@@ -58,11 +58,11 @@ export function SellerDashboard() {
         <Breadcrumbs items={[{ label: "Seller Studio" }, { label: "Overview" }]} />
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               Hello, {currentUser?.fullName.split(" ")[0]}
             </h1>
-            <p className="mt-1 text-sm text-[#4B5563]">
-              {currentUser?.businessName || "Your Herbiz Studio"} — Craft your products, and Herbiz manages the customers and delivery.
+            <p className="mt-1 text-sm text-[#4B5563] dark:text-[#B4C2B9]">
+              {currentUser?.businessName || "Your Herbiz Studio"} — Craft your products, and Herbiz handles shoppers and doorstep delivery.
             </p>
           </div>
           <Button onClick={() => navigate("/seller/products/new")}>
@@ -73,10 +73,10 @@ export function SellerDashboard() {
       </div>
 
       {currentUser?.status === "pending" && (
-        <div className="rounded-xl border border-[#F59E0B]/40 bg-[#FFFBEB] p-4 text-sm text-[#92400E]">
+        <div className="rounded-xl border border-[#F59E0B]/40 bg-[#FFFBEB] dark:bg-[#2A200D] dark:border-[#F59E0B]/30 p-4 text-sm text-[#92400E] dark:text-[#FCD34D]">
           <p className="font-semibold">Account Review in Progress</p>
           <p className="mt-1">
-            Herbiz Administration is reviewing your workshop registration. You can prepare product drafts now; once approved, your approved items go live in the marketplace.
+            Herbiz Administration is reviewing your workshop registration. You can prepare product drafts now; once approved, your items go live in the marketplace.
           </p>
         </div>
       )}
@@ -85,11 +85,11 @@ export function SellerDashboard() {
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Total Products</span>
-              <Package className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <Package className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {myProducts.length}
             </p>
           </CardContent>
@@ -97,11 +97,11 @@ export function SellerDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Approved & Live</span>
-              <CheckCircle2 className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <CheckCircle2 className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
               {approvedCount}
             </p>
           </CardContent>
@@ -109,11 +109,11 @@ export function SellerDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Pending Approval</span>
-              <Clock className="h-4 w-4 text-[#B45309]" aria-hidden="true" />
+              <Clock className="h-4 w-4 text-[#B45309] dark:text-[#FBBF24]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] dark:text-[#FBBF24] tabular-nums">
               {pendingCount}
             </p>
           </CardContent>
@@ -121,8 +121,8 @@ export function SellerDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">Total Orders</p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">Total Orders</p>
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {uniqueOrdersCount}
             </p>
           </CardContent>
@@ -130,11 +130,11 @@ export function SellerDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Your Net Earnings</span>
-              <Wallet className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <Wallet className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
               {formatETB(netEarnings)}
             </p>
           </CardContent>
@@ -142,10 +142,10 @@ export function SellerDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               This Month&apos;s Sales
             </p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {formatETB(monthlyGrossSales || grossSales)}
             </p>
           </CardContent>
@@ -159,7 +159,7 @@ export function SellerDashboard() {
             <CardTitle className="text-base">Orders Waiting for You</CardTitle>
             <Link
               to="/seller/orders"
-              className="inline-flex items-center gap-1 text-xs font-medium text-[#166534] hover:underline"
+              className="inline-flex items-center gap-1 text-xs font-medium text-[#166534] dark:text-[#4ADE80] hover:underline whitespace-nowrap shrink-0"
             >
               <span>Open orders</span>
               <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -167,21 +167,21 @@ export function SellerDashboard() {
           </CardHeader>
           <CardContent>
             {myOrderItems.length === 0 ? (
-              <p className="text-sm text-[#6B7280] py-4">
+              <p className="text-sm text-[#6B7280] dark:text-[#8A9990] py-4">
                 No incoming orders yet. Once customers buy your approved products, Herbiz sends preparation requests here.
               </p>
             ) : (
-              <div className="divide-y divide-[#F2F2EA]">
+              <div className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22]">
                 {myOrderItems.slice(0, 4).map(({ order, item }) => (
                   <div
                     key={item.id}
                     className="py-3 flex items-center justify-between gap-3"
                   >
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-[#1F2937] truncate">
+                      <p className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2] truncate">
                         {item.quantity} × {item.productName}
                       </p>
-                      <p className="text-xs text-[#6B7280] font-mono">
+                      <p className="text-xs text-[#6B7280] dark:text-[#8A9990] font-mono">
                         {order.id} · Destination: {order.city}
                       </p>
                     </div>
@@ -196,13 +196,13 @@ export function SellerDashboard() {
         <Card className="lg:col-span-6">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-base flex items-center gap-2">
-              <Bell className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <Bell className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
               <span>Messages from Herbiz Admin</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
             {notifications.length === 0 ? (
-              <p className="text-sm text-[#6B7280] py-4">
+              <p className="text-sm text-[#6B7280] dark:text-[#8A9990] py-4">
                 No administrative notices right now.
               </p>
             ) : (
@@ -212,17 +212,17 @@ export function SellerDashboard() {
                     key={n.id}
                     type="button"
                     onClick={() => markAsRead(n.id)}
-                    className="w-full text-left rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-3.5 hover:border-[#166534]/40 transition-colors cursor-pointer"
+                    className="w-full text-left rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-3.5 hover:border-[#166534]/40 dark:hover:border-[#4ADE80]/40 transition-colors cursor-pointer"
                   >
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-semibold text-[#1F2937]">
+                      <span className="text-xs font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                         {n.title}
                       </span>
-                      <span className="text-[11px] text-[#6B7280]">
+                      <span className="text-[11px] text-[#6B7280] dark:text-[#8A9990]">
                         {formatDateTime(n.createdAt)}
                       </span>
                     </div>
-                    <p className="mt-1 text-xs text-[#4B5563]">{n.message}</p>
+                    <p className="mt-1 text-xs text-[#4B5563] dark:text-[#B4C2B9]">{n.message}</p>
                   </button>
                 ))}
               </div>

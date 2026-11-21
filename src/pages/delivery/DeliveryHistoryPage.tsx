@@ -34,7 +34,7 @@ export function DeliveryHistoryPage() {
             { label: "Delivery History" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Completed & Past Deliveries
         </h1>
       </div>
@@ -60,24 +60,24 @@ export function DeliveryHistoryPage() {
             <TableBody>
               {history.map((order) => (
                 <TableRow key={order.id}>
-                  <TableCell className="font-mono font-semibold text-[#166534]">
+                  <TableCell className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80]">
                     {order.id}
                   </TableCell>
                   <TableCell>
-                    <p className="font-medium text-[#1F2937]">
+                    <p className="font-medium text-[#1F2937] dark:text-[#F1F5F2]">
                       {order.customerName}
                     </p>
-                    <p className="text-xs text-[#6B7280]">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                       {order.deliveryAddress}, {order.city}
                     </p>
                   </TableCell>
-                  <TableCell className="text-xs text-[#6B7280]">
+                  <TableCell className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                     {formatShortDate(order.updatedAt)}
                   </TableCell>
                   <TableCell>
                     <StatusText status={order.deliveryStatus} />
                   </TableCell>
-                  <TableCell className="text-right font-mono font-semibold text-[#166534] tabular-nums">
+                  <TableCell className="text-right font-mono font-semibold text-[#166534] dark:text-[#4ADE80] tabular-nums">
                     {order.deliveryStatus === "Delivered"
                       ? formatETB(order.deliveryPartnerPayoutETB)
                       : "0 ETB"}

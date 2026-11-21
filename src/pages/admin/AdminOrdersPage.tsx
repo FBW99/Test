@@ -108,10 +108,10 @@ export function AdminOrdersPage() {
             { label: "Order Management" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Centralized Order Coordination
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Coordinate between customers, women sellers, and delivery partners—all from one hub.
         </p>
       </div>
@@ -119,7 +119,7 @@ export function AdminOrdersPage() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative flex-1">
           <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280]"
+            className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280] dark:text-[#8A9990]"
             aria-hidden="true"
           />
           <Input
@@ -161,16 +161,16 @@ export function AdminOrdersPage() {
           <TableBody>
             {filtered.map((order) => (
               <TableRow key={order.id}>
-                <TableCell className="font-mono font-semibold text-[#166534]">
+                <TableCell className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80]">
                   {order.id}
                 </TableCell>
                 <TableCell>
-                  <p className="font-medium text-[#1F2937]">
+                  <p className="font-medium text-[#1F2937] dark:text-[#F1F5F2]">
                     {order.customerName}
                   </p>
-                  <p className="text-xs text-[#6B7280]">{order.city}</p>
+                  <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">{order.city}</p>
                 </TableCell>
-                <TableCell className="text-xs text-[#6B7280]">
+                <TableCell className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                   {formatShortDate(order.createdAt)}
                 </TableCell>
                 <TableCell>
@@ -180,7 +180,7 @@ export function AdminOrdersPage() {
                   <div className="space-y-0.5">
                     <StatusText status={order.deliveryStatus} />
                     {order.deliveryPartnerName && (
-                      <p className="text-xs text-[#6B7280]">
+                      <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                         {order.deliveryPartnerName}
                       </p>
                     )}
@@ -224,30 +224,30 @@ export function AdminOrdersPage() {
 
               <div className="space-y-5 text-sm">
                 {/* Customer & Seller Summary */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4">
                   <div>
-                    <p className="text-xs font-semibold text-[#6B7280]">
+                    <p className="text-xs font-semibold text-[#6B7280] dark:text-[#8A9990]">
                       Customer Details
                     </p>
-                    <p className="font-medium text-[#1F2937] mt-1">
+                    <p className="font-medium text-[#1F2937] dark:text-[#F1F5F2] mt-1">
                       {activeOrder.customerName}
                     </p>
-                    <p className="text-xs font-mono text-[#4B5563]">
+                    <p className="text-xs font-mono text-[#4B5563] dark:text-[#B4C2B9]">
                       {activeOrder.customerPhone}
                     </p>
-                    <p className="text-xs text-[#4B5563] mt-0.5">
+                    <p className="text-xs text-[#4B5563] dark:text-[#B4C2B9] mt-0.5">
                       {activeOrder.deliveryAddress}, {activeOrder.city}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-[#6B7280]">
+                    <p className="text-xs font-semibold text-[#6B7280] dark:text-[#8A9990]">
                       Financial Summary
                     </p>
-                    <p className="mt-1 font-mono text-xs">
+                    <p className="mt-1 font-mono text-xs text-[#1F2937] dark:text-[#F1F5F2]">
                       Items: {formatETB(activeOrder.subtotalETB)} + Delivery:{" "}
                       {formatETB(activeOrder.deliveryFeeETB)}
                     </p>
-                    <p className="font-mono text-xs text-[#166534]">
+                    <p className="font-mono text-xs text-[#166534] dark:text-[#4ADE80]">
                       Commission ({Math.round(activeOrder.commissionRate * 100)}%):{" "}
                       {formatETB(activeOrder.herbizCommissionETB)} · Seller Net:{" "}
                       {formatETB(activeOrder.sellerNetEarningsETB)}
@@ -258,7 +258,7 @@ export function AdminOrdersPage() {
                 {/* Items & Seller Prep Status */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h4 className="font-semibold text-[#1F2937]">
+                    <h4 className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                       Items & Seller Preparation
                     </h4>
                     {(activeOrder.status === "Order Placed" ||
@@ -276,17 +276,17 @@ export function AdminOrdersPage() {
                       </Button>
                     )}
                   </div>
-                  <div className="divide-y divide-[#F2F2EA] rounded-lg border border-[#E5E5DC]">
+                  <div className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22] rounded-lg border border-[#E5E5DC] dark:border-[#243329]">
                     {activeOrder.items.map((item) => (
                       <div
                         key={item.id}
                         className="p-3 flex items-center justify-between gap-3"
                       >
                         <div>
-                          <p className="font-medium text-[#1F2937]">
+                          <p className="font-medium text-[#1F2937] dark:text-[#F1F5F2]">
                             {item.quantity} × {item.productName}
                           </p>
-                          <p className="text-xs text-[#6B7280]">
+                          <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                             {item.sellerWorkshopLabel}
                           </p>
                         </div>
@@ -297,8 +297,8 @@ export function AdminOrdersPage() {
                 </div>
 
                 {/* Assign Delivery Partner */}
-                <div className="rounded-lg border border-[#E5E5DC] p-4 space-y-3">
-                  <h4 className="font-semibold text-[#1F2937]">
+                <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] p-4 space-y-3">
+                  <h4 className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                     Assign Delivery Partner
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -376,11 +376,11 @@ export function AdminOrdersPage() {
 
                 {/* Timeline */}
                 <div className="space-y-1.5">
-                  <h4 className="font-semibold text-[#1F2937]">Activity Log</h4>
-                  <div className="max-h-36 overflow-y-auto space-y-2 text-xs text-[#4B5563]">
+                  <h4 className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">Activity Log</h4>
+                  <div className="max-h-36 overflow-y-auto space-y-2 text-xs text-[#4B5563] dark:text-[#B4C2B9]">
                     {activeOrder.timeline.map((t) => (
                       <div key={t.id}>
-                        <span className="font-semibold text-[#1F2937]">
+                        <span className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                           {t.label}
                         </span>{" "}
                         · {t.actor} · {formatDateTime(t.timestamp)}

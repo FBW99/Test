@@ -109,7 +109,7 @@ export function RegisterPage() {
             {error && (
               <div
                 role="alert"
-                className="rounded-lg border border-[#FCA5A5] bg-[#FEF2F2] px-3.5 py-2.5 text-sm text-[#B91C1C]"
+                className="rounded-lg border border-[#FCA5A5] bg-[#FEF2F2] px-3.5 py-2.5 text-sm text-[#B91C1C] dark:border-[#7F1D1D] dark:bg-[#2A1215] dark:text-[#FCA5A5]"
               >
                 {error}
               </div>
@@ -122,10 +122,10 @@ export function RegisterPage() {
                 value={role}
                 onChange={(e) => setRole(e.target.value as UserRole)}
               >
-                <option value="customer">Customer — Browse and buy products</option>
-                <option value="seller">Seller / Woman Entrepreneur — Supply products</option>
-                <option value="delivery">Delivery Partner — Deliver orders</option>
-                <option value="admin">Admin (Demo Testing)</option>
+                <option value="customer">Customer — Browse and buy handmade goods</option>
+                <option value="seller">Woman Entrepreneur — Sell your products</option>
+                <option value="delivery">Delivery Partner — Deliver customer orders</option>
+                <option value="admin">Herbiz Coordinator (Admin)</option>
               </Select>
             </div>
 
@@ -233,9 +233,9 @@ export function RegisterPage() {
             </Button>
           </form>
 
-          <p className="mt-5 text-center text-sm text-[#4B5563]">
+          <p className="mt-5 text-center text-sm text-[#4B5563] dark:text-[#B4C2B9]">
             Already have an account?{" "}
-            <Link to="/login" className="font-semibold text-[#166534] hover:underline">
+            <Link to="/login" className="font-semibold text-[#166534] dark:text-[#4ADE80] hover:underline">
               Sign In
             </Link>
           </p>

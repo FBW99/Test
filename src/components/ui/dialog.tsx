@@ -32,7 +32,7 @@ export function Dialog({ open, onOpenChange, children }: DialogProps) {
       aria-modal="true"
     >
       <div
-        className="fixed inset-0 bg-black/45 backdrop-blur-[1px]"
+        className="fixed inset-0 bg-black/45 dark:bg-black/70 backdrop-blur-[1px]"
         onClick={() => onOpenChange(false)}
       />
       <div className="relative z-10 w-full max-w-lg">{children}</div>
@@ -52,7 +52,7 @@ export function DialogContent({
   return (
     <div
       className={cn(
-        "relative rounded-xl border border-[#E5E5DC] bg-white p-6 shadow-lg max-h-[90vh] overflow-y-auto",
+        "relative rounded-xl border border-[#E5E5DC] bg-white p-6 shadow-lg max-h-[90vh] overflow-y-auto dark:border-[#243329] dark:bg-[#121A15] dark:text-[#F1F5F2]",
         className
       )}
     >
@@ -61,7 +61,7 @@ export function DialogContent({
           type="button"
           onClick={onClose}
           aria-label="Close dialog"
-          className="absolute right-4 top-4 rounded-lg p-1.5 text-[#6B7280] hover:bg-[#F2F2EA] hover:text-[#1F2937] transition-colors cursor-pointer"
+          className="absolute right-4 top-4 rounded-lg p-1.5 text-[#6B7280] hover:bg-[#F2F2EA] hover:text-[#1F2937] dark:text-[#8A9990] dark:hover:bg-[#18231C] dark:hover:text-[#F1F5F2] transition-colors cursor-pointer"
         >
           <X className="h-4 w-4" />
         </button>
@@ -90,7 +90,7 @@ export function DialogTitle({
   return (
     <h2
       className={cn(
-        "font-display text-lg font-semibold leading-tight text-[#1F2937]",
+        "font-display text-lg font-semibold leading-tight text-[#1F2937] dark:text-[#F1F5F2]",
         className
       )}
       {...props}
@@ -103,7 +103,7 @@ export function DialogDescription({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p className={cn("text-sm text-[#4B5563]", className)} {...props} />
+    <p className={cn("text-sm text-[#4B5563] dark:text-[#B4C2B9]", className)} {...props} />
   );
 }
 

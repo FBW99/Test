@@ -50,10 +50,10 @@ export function AdminDashboard() {
         <Breadcrumbs items={[{ label: "Admin Hub" }, { label: "Overview" }]} />
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               Herbiz Operations Overview
             </h1>
-            <p className="mt-1 text-sm text-[#4B5563]">
+            <p className="mt-1 text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Central command for seller onboarding, product curation, order coordination, and delivery dispatch.
             </p>
           </div>
@@ -64,7 +64,7 @@ export function AdminDashboard() {
             className="self-start sm:self-auto"
           >
             <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>Reset Demo Data</span>
+            <span>Reset Sample Data</span>
           </Button>
         </div>
       </div>
@@ -73,14 +73,14 @@ export function AdminDashboard() {
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Herbiz Revenue</span>
-              <DollarSign className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <DollarSign className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
               {formatETB(financials.totalHerbizRevenueETB)}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280] tabular-nums">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990] tabular-nums">
               From {formatETB(financials.grossMerchandiseSalesETB)} gross sales
             </p>
           </CardContent>
@@ -88,14 +88,14 @@ export function AdminDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Total Orders</span>
-              <ClipboardList className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <ClipboardList className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {orders.length}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280] tabular-nums">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990] tabular-nums">
               {financials.completedOrderCount} completed
             </p>
           </CardContent>
@@ -103,14 +103,14 @@ export function AdminDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Women Sellers</span>
-              <Store className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <Store className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {sellers.length}
             </p>
-            <p className="mt-1 text-xs text-[#B45309] tabular-nums">
+            <p className="mt-1 text-xs text-[#B45309] dark:text-[#FBBF24] tabular-nums">
               {pendingSellers.length} pending approval
             </p>
           </CardContent>
@@ -118,14 +118,14 @@ export function AdminDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Active Customers</span>
-              <Users className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <Users className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {customers.filter((c) => c.status === "active").length}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280] tabular-nums">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990] tabular-nums">
               {products.filter((p) => p.status === "approved").length} live products
             </p>
           </CardContent>
@@ -133,16 +133,16 @@ export function AdminDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Pending Products</span>
-              <CheckSquare className="h-4 w-4 text-[#B45309]" aria-hidden="true" />
+              <CheckSquare className="h-4 w-4 text-[#B45309] dark:text-[#FBBF24]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#B45309] dark:text-[#FBBF24] tabular-nums">
               {pendingProducts.length}
             </p>
             <Link
               to="/admin/products"
-              className="mt-1 inline-block text-xs font-medium text-[#166534] hover:underline"
+              className="mt-1 inline-block text-xs font-medium text-[#166534] dark:text-[#4ADE80] hover:underline"
             >
               Review queue →
             </Link>
@@ -151,16 +151,16 @@ export function AdminDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280]">
+            <div className="flex items-center justify-between text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               <span>Deliveries In Progress</span>
-              <Truck className="h-4 w-4 text-[#0F766E]" aria-hidden="true" />
+              <Truck className="h-4 w-4 text-[#0F766E] dark:text-[#2DD4BF]" aria-hidden="true" />
             </div>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#0F766E] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#0F766E] dark:text-[#2DD4BF] tabular-nums">
               {deliveriesInProgress}
             </p>
             <Link
               to="/admin/deliveries"
-              className="mt-1 inline-block text-xs font-medium text-[#166534] hover:underline"
+              className="mt-1 inline-block text-xs font-medium text-[#166534] dark:text-[#4ADE80] hover:underline"
             >
               Manage dispatch →
             </Link>
@@ -169,25 +169,25 @@ export function AdminDashboard() {
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               Successful Deliveries
             </p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
               {successfulDeliveries}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280]">Verified doorstep drops</p>
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990]">Verified doorstep drops</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-5">
-            <p className="text-xs font-medium text-[#6B7280]">
+            <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
               Seller Net Earnings
             </p>
-            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] tabular-nums">
+            <p className="mt-2 font-mono text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
               {formatETB(financials.totalSellerNetEarningsETB)}
             </p>
-            <p className="mt-1 text-xs text-[#6B7280]">
+            <p className="mt-1 text-xs text-[#6B7280] dark:text-[#8A9990]">
               After {Math.round(financeSettings.commissionRate * 100)}% commission
             </p>
           </CardContent>
@@ -201,29 +201,29 @@ export function AdminDashboard() {
             <CardTitle className="text-base">Recent Orders Requiring Action</CardTitle>
             <Link
               to="/admin/orders"
-              className="text-xs font-medium text-[#166534] hover:underline"
+              className="text-xs font-medium text-[#166534] dark:text-[#4ADE80] hover:underline whitespace-nowrap shrink-0"
             >
               Open all orders →
             </Link>
           </CardHeader>
-          <CardContent className="divide-y divide-[#F2F2EA]">
+          <CardContent className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22]">
             {orders.slice(0, 5).map((order) => (
               <div
                 key={order.id}
                 className="py-3 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
               >
                 <div>
-                  <p className="font-mono text-sm font-semibold text-[#1F2937]">
+                  <p className="font-mono text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                     {order.id} · {order.customerName}
                   </p>
-                  <p className="text-xs text-[#6B7280]">
+                  <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                     {formatShortDate(order.createdAt)} · {order.items.length} item(s) · Courier:{" "}
                     {order.deliveryPartnerName || "Unassigned"}
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <StatusText status={order.status} />
-                  <span className="font-mono text-sm font-semibold tabular-nums">
+                  <span className="font-mono text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
                     {formatETB(order.totalETB)}
                   </span>
                 </div>
@@ -237,12 +237,12 @@ export function AdminDashboard() {
             <CardTitle className="text-base">Pending Approvals</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 flex items-center justify-between">
+            <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 flex items-center justify-between gap-3">
               <div>
-                <p className="text-sm font-semibold text-[#1F2937]">
+                <p className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                   Seller Applications
                 </p>
-                <p className="text-xs text-[#6B7280]">
+                <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                   {pendingSellers.length} entrepreneur(s) awaiting verification
                 </p>
               </div>
@@ -253,12 +253,12 @@ export function AdminDashboard() {
               </Link>
             </div>
 
-            <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 flex items-center justify-between">
+            <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 flex items-center justify-between gap-3">
               <div>
-                <p className="text-sm font-semibold text-[#1F2937]">
+                <p className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                   Product Submissions
                 </p>
-                <p className="text-xs text-[#6B7280]">
+                <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                   {pendingProducts.length} product(s) waiting for catalog approval
                 </p>
               </div>
@@ -269,12 +269,12 @@ export function AdminDashboard() {
               </Link>
             </div>
 
-            <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 flex items-center justify-between">
+            <div className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 flex items-center justify-between gap-3">
               <div>
-                <p className="text-sm font-semibold text-[#1F2937]">
+                <p className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                   Commission & Delivery Fees
                 </p>
-                <p className="text-xs text-[#6B7280]">
+                <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                   Current rate: {Math.round(financeSettings.commissionRate * 100)}% ·{" "}
                   {formatETB(financeSettings.customerDeliveryFeeETB)} fee
                 </p>
@@ -292,9 +292,9 @@ export function AdminDashboard() {
       <ConfirmDialog
         open={resetOpen}
         onOpenChange={setResetOpen}
-        title="Reset Hackathon Demo Data?"
-        description="This clears local browser changes and restores the original seeded Herbiz accounts, products, orders, and financial settings."
-        confirmLabel="Reset Platform"
+        title="Restore Original Sample Data?"
+        description="This clears local browser changes and restores the original Herbiz accounts, products, orders, and financial settings."
+        confirmLabel="Restore Data"
         destructive
         onConfirm={resetDemoPlatform}
       />

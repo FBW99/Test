@@ -130,11 +130,11 @@ export function LoginPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="text-center max-w-xl mx-auto">
-        <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937]">
-          Sign In to Herbiz
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
+          Welcome Back to Herbiz
         </h1>
-        <p className="mt-2 text-sm text-[#4B5563]">
-          Choose your role portal below and enter your assigned username or email and password.
+        <p className="mt-2 text-sm text-[#4B5563] dark:text-[#B4C2B9]">
+          Select your portal below and sign in with your username or email.
         </p>
       </div>
 
@@ -142,7 +142,7 @@ export function LoginPage() {
       <div
         role="tablist"
         aria-label="Role Portals"
-        className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-xl border border-[#E5E5DC] bg-white"
+        className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-xl border border-[#E5E5DC] bg-white dark:border-[#243329] dark:bg-[#121A15]"
       >
         {PORTALS.map((portal) => {
           const Icon = portal.icon;
@@ -157,8 +157,8 @@ export function LoginPage() {
               className={cn(
                 "flex items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors cursor-pointer whitespace-nowrap",
                 isSelected
-                  ? "bg-[#166534] text-white"
-                  : "text-[#4B5563] hover:bg-[#FAFAF5] hover:text-[#1F2937]"
+                  ? "bg-[#166534] text-white dark:bg-[#15803D]"
+                  : "text-[#4B5563] hover:bg-[#FAFAF5] hover:text-[#1F2937] dark:text-[#B4C2B9] dark:hover:bg-[#18231C] dark:hover:text-[#F1F5F2]"
               )}
             >
               <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -180,7 +180,7 @@ export function LoginPage() {
               {error && (
                 <div
                   role="alert"
-                  className="rounded-lg border border-[#FCA5A5] bg-[#FEF2F2] px-3.5 py-2.5 text-sm text-[#B91C1C]"
+                  className="rounded-lg border border-[#FCA5A5] bg-[#FEF2F2] px-3.5 py-2.5 text-sm text-[#B91C1C] dark:border-[#7F1D1D] dark:bg-[#2A1215] dark:text-[#FCA5A5]"
                 >
                   {error}
                 </div>
@@ -203,7 +203,7 @@ export function LoginPage() {
                   <Label htmlFor="password">Password</Label>
                   <Link
                     to="/forgot-password"
-                    className="text-xs font-medium text-[#166534] hover:underline"
+                    className="text-xs font-medium text-[#166534] dark:text-[#4ADE80] hover:underline"
                   >
                     Forgot password?
                   </Link>
@@ -222,7 +222,7 @@ export function LoginPage() {
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
                     aria-label={showPassword ? "Hide password" : "Show password"}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-[#6B7280] hover:text-[#1F2937] cursor-pointer"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-[#6B7280] hover:text-[#1F2937] dark:text-[#8A9990] dark:hover:text-[#F1F5F2] cursor-pointer"
                   >
                     {showPassword ? (
                       <EyeOff className="h-4 w-4" />
@@ -234,12 +234,12 @@ export function LoginPage() {
               </div>
 
               <div className="flex items-center justify-between pt-1">
-                <label className="inline-flex items-center gap-2 text-sm text-[#4B5563] cursor-pointer">
+                <label className="inline-flex items-center gap-2 text-sm text-[#4B5563] dark:text-[#B4C2B9] cursor-pointer">
                   <input
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="h-4 w-4 rounded border-[#E5E5DC] text-[#166534] focus:ring-[#166534]"
+                    className="h-4 w-4 rounded border-[#E5E5DC] text-[#166534] focus:ring-[#166534] dark:border-[#243329] dark:bg-[#0F1612]"
                   />
                   <span>Keep me signed in</span>
                 </label>
@@ -250,11 +250,11 @@ export function LoginPage() {
               </Button>
             </form>
 
-            <p className="mt-6 text-center text-sm text-[#4B5563]">
+            <p className="mt-6 text-center text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               New to Herbiz?{" "}
               <Link
                 to={`/register?role=${selectedRole === "admin" ? "customer" : selectedRole}`}
-                className="font-semibold text-[#166534] hover:underline"
+                className="font-semibold text-[#166534] dark:text-[#4ADE80] hover:underline"
               >
                 Create an account
               </Link>
@@ -262,33 +262,33 @@ export function LoginPage() {
           </CardContent>
         </Card>
 
-        {/* Demo Credentials Card */}
-        <Card className="lg:col-span-5 bg-[#FAFAF5]">
+        {/* Quick Preview Credentials Card */}
+        <Card className="lg:col-span-5 bg-[#FAFAF5] dark:bg-[#0F1612]">
           <CardHeader>
             <CardTitle className="text-base">
-              Demo Account · {activePortal.shortLabel}
+              Quick Access · {activePortal.shortLabel}
             </CardTitle>
             <CardDescription>
-              Simulated hackathon authentication stored locally in your browser.
+              Use the sample account below to step right into this role.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="rounded-lg border border-[#E5E5DC] bg-white p-4 space-y-2.5 text-sm">
+            <div className="rounded-lg border border-[#E5E5DC] bg-white p-4 space-y-2.5 text-sm dark:border-[#243329] dark:bg-[#121A15]">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[#6B7280]">Username</span>
-                <span className="font-mono font-semibold text-[#1F2937]">
+                <span className="text-[#6B7280] dark:text-[#8A9990]">Username</span>
+                <span className="font-mono font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                   {activePortal.username}
                 </span>
               </div>
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[#6B7280]">Email</span>
-                <span className="font-mono text-xs font-medium text-[#1F2937]">
+                <span className="text-[#6B7280] dark:text-[#8A9990]">Email</span>
+                <span className="font-mono text-xs font-medium text-[#1F2937] dark:text-[#F1F5F2]">
                   {activePortal.email}
                 </span>
               </div>
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[#6B7280]">Password</span>
-                <span className="font-mono font-semibold text-[#166534]">
+                <span className="text-[#6B7280] dark:text-[#8A9990]">Password</span>
+                <span className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80]">
                   {activePortal.password}
                 </span>
               </div>
@@ -309,7 +309,7 @@ export function LoginPage() {
                 onClick={() => handleQuickDemo(activePortal.role)}
                 className="w-full"
               >
-                Instant Demo Sign In ({activePortal.shortLabel})
+                Enter as {activePortal.shortLabel}
               </Button>
             </div>
           </CardContent>

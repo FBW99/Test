@@ -53,7 +53,7 @@ export function CheckoutPage() {
         />
         <Card>
           <CardContent className="p-8 text-center space-y-4">
-            <p className="text-base font-medium text-[#1F2937]">
+            <p className="text-base font-medium text-[#1F2937] dark:text-[#F1F5F2]">
               Your cart is empty. Add products before checking out.
             </p>
             <Button onClick={() => navigate("/customer/shop")}>
@@ -101,7 +101,7 @@ export function CheckoutPage() {
             { label: "Checkout" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Checkout
         </h1>
       </div>
@@ -162,7 +162,7 @@ export function CheckoutPage() {
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="chkPayment">Payment Method (Demo)</Label>
+              <Label htmlFor="chkPayment">Payment Method</Label>
               <Select
                 id="chkPayment"
                 value={paymentMethod}
@@ -171,12 +171,12 @@ export function CheckoutPage() {
                 }
               >
                 <option value="Cash on Delivery">Cash on Delivery</option>
-                <option value="Mobile Money (Demo)">Mobile Money (Demo)</option>
+                <option value="Mobile Money (Demo)">Mobile Money</option>
               </Select>
             </div>
 
-            <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-3.5 flex items-start gap-2.5 text-xs text-[#4B5563]">
-              <ShieldCheck className="h-4 w-4 text-[#166534] shrink-0 mt-0.5" aria-hidden="true" />
+            <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-3.5 flex items-start gap-2.5 text-xs text-[#4B5563] dark:border-[#243329] dark:bg-[#0F1612] dark:text-[#B4C2B9]">
+              <ShieldCheck className="h-4 w-4 text-[#166534] dark:text-[#4ADE80] shrink-0 mt-0.5" aria-hidden="true" />
               <span>
                 Your order is managed centrally by Herbiz. Once placed, our team confirms availability with the makers and dispatches a courier.
               </span>
@@ -189,41 +189,41 @@ export function CheckoutPage() {
             <CardTitle className="text-base">Order Summary</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="divide-y divide-[#F2F2EA] text-sm">
+            <div className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22] text-sm">
               {items.map(({ product, quantity, lineTotalETB }) => (
                 <div
                   key={product.id}
                   className="py-2.5 flex items-center justify-between gap-3"
                 >
                   <div className="min-w-0">
-                    <p className="font-medium text-[#1F2937] truncate">
+                    <p className="font-medium text-[#1F2937] dark:text-[#F1F5F2] truncate">
                       {product.name}
                     </p>
-                    <p className="text-xs text-[#6B7280]">Qty: {quantity}</p>
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">Qty: {quantity}</p>
                   </div>
-                  <span className="font-mono font-medium text-[#1F2937] tabular-nums shrink-0">
+                  <span className="font-mono font-medium text-[#1F2937] dark:text-[#F1F5F2] tabular-nums shrink-0">
                     {formatETB(lineTotalETB)}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="border-t border-[#E5E5DC] pt-3 space-y-2 text-sm">
-              <div className="flex justify-between text-[#4B5563]">
+            <div className="border-t border-[#E5E5DC] dark:border-[#243329] pt-3 space-y-2 text-sm">
+              <div className="flex justify-between text-[#4B5563] dark:text-[#B4C2B9]">
                 <span>Subtotal</span>
                 <span className="font-mono tabular-nums">
                   {formatETB(breakdown.subtotalETB)}
                 </span>
               </div>
-              <div className="flex justify-between text-[#4B5563]">
+              <div className="flex justify-between text-[#4B5563] dark:text-[#B4C2B9]">
                 <span>Delivery Fee</span>
                 <span className="font-mono tabular-nums">
                   {formatETB(breakdown.customerDeliveryFeeETB)}
                 </span>
               </div>
-              <div className="flex justify-between text-base font-bold text-[#1F2937] pt-2 border-t border-[#E5E5DC]">
+              <div className="flex justify-between text-base font-bold text-[#1F2937] dark:text-[#F1F5F2] pt-2 border-t border-[#E5E5DC] dark:border-[#243329]">
                 <span>Total Payable</span>
-                <span className="font-mono text-[#166534] tabular-nums">
+                <span className="font-mono text-[#166534] dark:text-[#4ADE80] tabular-nums">
                   {formatETB(breakdown.totalCustomerPayableETB)}
                 </span>
               </div>

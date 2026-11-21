@@ -43,14 +43,14 @@ export function CustomerOrdersPage() {
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               My Orders
             </h1>
-            <p className="text-sm text-[#4B5563]">
+            <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Track every stage from Herbiz confirmation through courier delivery.
             </p>
           </div>
-          <div className="flex items-center gap-1 p-1 rounded-lg border border-[#E5E5DC] bg-white self-start">
+          <div className="flex items-center gap-1 p-1 rounded-lg border border-[#E5E5DC] bg-white dark:border-[#243329] dark:bg-[#121A15] self-start">
             {(["all", "active", "delivered"] as const).map((tab) => (
               <button
                 key={tab}
@@ -59,8 +59,8 @@ export function CustomerOrdersPage() {
                 className={cn(
                   "px-3 py-1.5 text-xs font-medium rounded-md capitalize cursor-pointer transition-colors",
                   filter === tab
-                    ? "bg-[#166534] text-white"
-                    : "text-[#4B5563] hover:text-[#1F2937]"
+                    ? "bg-[#166534] text-white dark:bg-[#15803D]"
+                    : "text-[#4B5563] hover:text-[#1F2937] dark:text-[#B4C2B9] dark:hover:text-[#F1F5F2]"
                 )}
               >
                 {tab}
@@ -94,7 +94,7 @@ export function CustomerOrdersPage() {
             <TableBody>
               {filtered.map((order) => (
                 <TableRow key={order.id}>
-                  <TableCell className="font-mono font-semibold text-[#166534]">
+                  <TableCell className="font-mono font-semibold text-[#166534] dark:text-[#4ADE80]">
                     <Link
                       to={`/customer/orders/${order.id}`}
                       className="hover:underline"
@@ -102,7 +102,7 @@ export function CustomerOrdersPage() {
                       {order.id}
                     </Link>
                   </TableCell>
-                  <TableCell className="text-xs text-[#4B5563]">
+                  <TableCell className="text-xs text-[#4B5563] dark:text-[#B4C2B9]">
                     {formatShortDate(order.createdAt)}
                   </TableCell>
                   <TableCell className="text-sm">

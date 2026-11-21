@@ -62,11 +62,11 @@ export function StatusText({
   const tone = getToneForStatus(status);
 
   const colorClasses: Record<Tone, string> = {
-    success: "text-[#166534]",
-    warning: "text-[#B45309]",
-    info: "text-[#0F766E]",
-    danger: "text-[#B91C1C]",
-    neutral: "text-[#4B5563]",
+    success: "text-[#166534] dark:text-[#4ADE80]",
+    warning: "text-[#B45309] dark:text-[#FBBF24]",
+    info: "text-[#0F766E] dark:text-[#2DD4BF]",
+    danger: "text-[#B91C1C] dark:text-[#F87171]",
+    neutral: "text-[#4B5563] dark:text-[#B4C2B9]",
   };
 
   const Icon =

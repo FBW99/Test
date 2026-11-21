@@ -58,7 +58,7 @@ export function ProductDetailsPage() {
         </Button>
         <Card>
           <CardContent className="p-8 text-center">
-            <p className="text-base font-semibold text-[#1F2937]">
+            <p className="text-base font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
               Product not found or currently pending review.
             </p>
           </CardContent>
@@ -118,7 +118,7 @@ export function ProductDetailsPage() {
           variant="ghost"
           size="sm"
           onClick={() => navigate("/customer/shop")}
-          className="px-0 text-[#4B5563] hover:text-[#166534]"
+          className="px-0 text-[#4B5563] hover:text-[#166534] dark:text-[#B4C2B9] dark:hover:text-[#4ADE80]"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           <span>Back to Marketplace</span>
@@ -127,7 +127,7 @@ export function ProductDetailsPage() {
 
       {/* Contiguous Product Gallery + Purchase Module */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 items-start">
-        <div className="lg:col-span-7 overflow-hidden rounded-xl border border-[#E5E5DC] bg-[#F2F2EA]">
+        <div className="lg:col-span-7 overflow-hidden rounded-xl border border-[#E5E5DC] bg-[#F2F2EA] dark:border-[#243329] dark:bg-[#18231C]">
           <SafeImage
             src={product.imageUrl}
             alt={product.name}
@@ -139,32 +139,32 @@ export function ProductDetailsPage() {
         <Card className="lg:col-span-5">
           <CardContent className="p-6 space-y-5">
             <div className="space-y-2">
-              <p className="text-xs font-medium text-[#6B7280]">
+              <p className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990]">
                 {product.category} ·{" "}
                 {product.stock > 0 ? `${product.stock} available` : "Out of stock"}
               </p>
-              <h1 className="font-display text-2xl font-bold text-[#1F2937] leading-snug">
+              <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] leading-snug">
                 {product.name}
               </h1>
-              <p className="font-mono text-2xl font-bold text-[#166534] tabular-nums">
+              <p className="font-mono text-2xl font-bold text-[#166534] dark:text-[#4ADE80] tabular-nums">
                 {formatETB(product.priceETB)}
               </p>
             </div>
 
-            <p className="text-sm leading-relaxed text-[#4B5563]">
+            <p className="text-sm leading-relaxed text-[#4B5563] dark:text-[#B4C2B9]">
               {product.description}
             </p>
 
             {/* Managed Seller Info (Strict Rule: Zero direct seller contact) */}
-            <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#166534]">
+            <div className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 space-y-2 dark:border-[#243329] dark:bg-[#0F1612]">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#166534] dark:text-[#4ADE80]">
                 <ShieldCheck className="h-4 w-4 shrink-0" aria-hidden="true" />
                 <span>Verified Maker · Managed by Herbiz</span>
               </div>
-              <p className="text-sm font-medium text-[#1F2937]">
+              <p className="text-sm font-medium text-[#1F2937] dark:text-[#F1F5F2]">
                 {product.sellerWorkshopLabel}
               </p>
-              <p className="text-xs text-[#6B7280]">
+              <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                 All quality checks, order preparation, and questions are handled directly by the Herbiz team.
               </p>
               <Button
@@ -180,15 +180,15 @@ export function ProductDetailsPage() {
             </div>
 
             {/* Quantity & Add to Cart */}
-            <div className="space-y-3 pt-2 border-t border-[#E5E5DC]">
+            <div className="space-y-3 pt-2 border-t border-[#E5E5DC] dark:border-[#243329]">
               <div className="flex items-center justify-between">
                 <Label>Quantity</Label>
-                <div className="inline-flex items-center rounded-lg border border-[#E5E5DC] bg-white">
+                <div className="inline-flex items-center rounded-lg border border-[#E5E5DC] bg-white dark:border-[#243329] dark:bg-[#0F1612]">
                   <button
                     type="button"
                     aria-label="Decrease quantity"
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="h-9 w-9 flex items-center justify-center text-[#4B5563] hover:text-[#1F2937] cursor-pointer"
+                    className="h-9 w-9 flex items-center justify-center text-[#4B5563] hover:text-[#1F2937] dark:text-[#B4C2B9] dark:hover:text-[#F1F5F2] cursor-pointer"
                   >
                     <Minus className="h-3.5 w-3.5" />
                   </button>
@@ -199,7 +199,7 @@ export function ProductDetailsPage() {
                     type="button"
                     aria-label="Increase quantity"
                     onClick={() => setQuantity((q) => Math.min(maxQty, q + 1))}
-                    className="h-9 w-9 flex items-center justify-center text-[#4B5563] hover:text-[#1F2937] cursor-pointer"
+                    className="h-9 w-9 flex items-center justify-center text-[#4B5563] hover:text-[#1F2937] dark:text-[#B4C2B9] dark:hover:text-[#F1F5F2] cursor-pointer"
                   >
                     <Plus className="h-3.5 w-3.5" />
                   </button>
@@ -235,24 +235,24 @@ export function ProductDetailsPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {productReviews.length === 0 ? (
-              <p className="text-sm text-[#6B7280]">
+              <p className="text-sm text-[#6B7280] dark:text-[#8A9990]">
                 No reviews yet. Be the first to review this handcrafted product.
               </p>
             ) : (
               productReviews.map((rev) => (
                 <div
                   key={rev.id}
-                  className="border-b border-[#F2F2EA] pb-4 last:border-0 last:pb-0"
+                  className="border-b border-[#F2F2EA] pb-4 last:border-0 last:pb-0 dark:border-[#1D2A22]"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-sm font-semibold text-[#1F2937]">
+                    <span className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                       {rev.customerName}
                     </span>
-                    <span className="text-xs text-[#6B7280]">
+                    <span className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                       {formatShortDate(rev.createdAt)}
                     </span>
                   </div>
-                  <div className="mt-1 flex items-center gap-0.5 text-[#F59E0B]">
+                  <div className="mt-1 flex items-center gap-0.5 text-[#F59E0B] dark:text-[#FBBF24]">
                     {Array.from({ length: rev.rating }).map((_, idx) => (
                       <Star
                         key={idx}
@@ -261,7 +261,7 @@ export function ProductDetailsPage() {
                       />
                     ))}
                   </div>
-                  <p className="mt-2 text-sm text-[#4B5563]">{rev.comment}</p>
+                  <p className="mt-2 text-sm text-[#4B5563] dark:text-[#B4C2B9]">{rev.comment}</p>
                 </div>
               ))
             )}
@@ -288,8 +288,8 @@ export function ProductDetailsPage() {
                       <Star
                         className={`h-5 w-5 ${
                           num <= reviewRating
-                            ? "text-[#F59E0B] fill-current"
-                            : "text-[#D1D5DB]"
+                            ? "text-[#F59E0B] dark:text-[#FBBF24] fill-current"
+                            : "text-[#D1D5DB] dark:text-[#3A4D41]"
                         }`}
                       />
                     </button>

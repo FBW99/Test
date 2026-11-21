@@ -44,10 +44,10 @@ export function CustomerDashboard() {
         <Breadcrumbs items={[{ label: "Customer Portal" }, { label: "Home" }]} />
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937]">
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
               Welcome, {currentUser?.fullName.split(" ")[0]}
             </h1>
-            <p className="mt-1 text-sm text-[#4B5563]">
+            <p className="mt-1 text-sm text-[#4B5563] dark:text-[#B4C2B9]">
               Every item is verified by Herbiz and delivered straight from women entrepreneurs.
             </p>
           </div>
@@ -64,7 +64,7 @@ export function CustomerDashboard() {
           <form onSubmit={handleSearchSubmit} className="flex gap-2">
             <div className="relative flex-1">
               <Search
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280]"
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280] dark:text-[#8A9990]"
                 aria-hidden="true"
               />
               <Input
@@ -78,7 +78,7 @@ export function CustomerDashboard() {
           </form>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-medium text-[#6B7280] mr-1">
+            <span className="text-xs font-medium text-[#6B7280] dark:text-[#8A9990] mr-1">
               Categories:
             </span>
             {PRODUCT_CATEGORIES.map((category) => (
@@ -90,7 +90,7 @@ export function CustomerDashboard() {
                     `/customer/shop?category=${encodeURIComponent(category)}`
                   )
                 }
-                className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] px-3 py-1.5 text-xs font-medium text-[#1F2937] hover:border-[#166534] hover:text-[#166534] transition-colors cursor-pointer"
+                className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] px-3 py-1.5 text-xs font-medium text-[#1F2937] hover:border-[#166534] hover:text-[#166534] dark:border-[#243329] dark:bg-[#0F1612] dark:text-[#F1F5F2] dark:hover:border-[#4ADE80] dark:hover:text-[#4ADE80] transition-colors cursor-pointer"
               >
                 {category}
               </button>
@@ -124,12 +124,12 @@ export function CustomerDashboard() {
       {/* Featured Products */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-display text-xl font-semibold text-[#1F2937]">
+          <h2 className="font-display text-xl font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
             Featured Products
           </h2>
           <Link
             to="/customer/shop"
-            className="inline-flex items-center gap-1 text-sm font-medium text-[#166534] hover:underline"
+            className="inline-flex items-center gap-1 text-sm font-medium text-[#166534] dark:text-[#4ADE80] hover:underline"
           >
             <span>View all</span>
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -153,18 +153,18 @@ export function CustomerDashboard() {
           <CardTitle className="text-base">Your Recent Orders</CardTitle>
           <Link
             to="/customer/orders"
-            className="text-xs font-medium text-[#166534] hover:underline"
+            className="text-xs font-medium text-[#166534] dark:text-[#4ADE80] hover:underline"
           >
             See all orders
           </Link>
         </CardHeader>
         <CardContent>
           {myOrders.length === 0 ? (
-            <p className="text-sm text-[#4B5563] py-4">
+            <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9] py-4">
               You have not placed an order yet. Explore the marketplace to get started.
             </p>
           ) : (
-            <div className="divide-y divide-[#E5E5DC]">
+            <div className="divide-y divide-[#E5E5DC] dark:divide-[#243329]">
               {myOrders.slice(0, 3).map((order) => (
                 <div
                   key={order.id}
@@ -173,17 +173,17 @@ export function CustomerDashboard() {
                   <div>
                     <Link
                       to={`/customer/orders/${order.id}`}
-                      className="font-mono text-sm font-semibold text-[#166534] hover:underline"
+                      className="font-mono text-sm font-semibold text-[#166534] dark:text-[#4ADE80] hover:underline"
                     >
                       {order.id}
                     </Link>
-                    <p className="text-xs text-[#6B7280]">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                       {formatShortDate(order.createdAt)} · {order.items.length} item(s)
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
                     <StatusText status={order.status} />
-                    <span className="font-mono text-sm font-semibold text-[#1F2937] tabular-nums">
+                    <span className="font-mono text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
                       {formatETB(order.totalETB)}
                     </span>
                   </div>

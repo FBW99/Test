@@ -54,10 +54,10 @@ export function AdminCustomersPage() {
             { label: "Customers & Support" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Customers & Herbiz Support Desk
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Manage customer accounts and answer inquiries—Herbiz handles all customer communication directly.
         </p>
       </div>
@@ -87,10 +87,10 @@ export function AdminCustomersPage() {
                 return (
                   <TableRow key={customer.id}>
                     <TableCell>
-                      <p className="font-semibold text-[#1F2937]">
+                      <p className="font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                         {customer.fullName}
                       </p>
-                      <p className="text-xs text-[#6B7280] font-mono">
+                      <p className="text-xs text-[#6B7280] dark:text-[#8A9990] font-mono">
                         @{customer.username} · {customer.phone}
                       </p>
                     </TableCell>
@@ -150,27 +150,27 @@ export function AdminCustomersPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           {inquiries.length === 0 ? (
-            <p className="text-sm text-[#6B7280]">No customer inquiries yet.</p>
+            <p className="text-sm text-[#6B7280] dark:text-[#8A9990]">No customer inquiries yet.</p>
           ) : (
             inquiries.map((inq) => (
               <div
                 key={inq.id}
-                className="rounded-lg border border-[#E5E5DC] bg-[#FAFAF5] p-4 flex flex-col sm:flex-row sm:items-start justify-between gap-4"
+                className="rounded-lg border border-[#E5E5DC] dark:border-[#243329] bg-[#FAFAF5] dark:bg-[#0F1612] p-4 flex flex-col sm:flex-row sm:items-start justify-between gap-4"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-3">
-                    <span className="font-semibold text-sm text-[#1F2937]">
+                    <span className="font-semibold text-sm text-[#1F2937] dark:text-[#F1F5F2]">
                       {inq.subject}
                     </span>
                     <StatusText status={inq.status} />
                   </div>
-                  <p className="text-xs text-[#6B7280]">
+                  <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                     From {inq.customerName} · {formatShortDate(inq.createdAt)}
                     {inq.orderId ? ` · Order ${inq.orderId}` : ""}
                   </p>
-                  <p className="text-sm text-[#4B5563] pt-1">{inq.message}</p>
+                  <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9] pt-1">{inq.message}</p>
                   {inq.adminReply && (
-                    <p className="text-xs text-[#166534] pt-1">
+                    <p className="text-xs text-[#166534] dark:text-[#4ADE80] pt-1">
                       Replied: {inq.adminReply}
                     </p>
                   )}
@@ -200,7 +200,7 @@ export function AdminCustomersPage() {
             <DialogTitle>Reply to {replying?.customerName}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleReplySubmit} className="space-y-4">
-            <p className="text-xs text-[#4B5563] bg-[#FAFAF5] p-3 rounded-lg border border-[#E5E5DC]">
+            <p className="text-xs text-[#4B5563] dark:text-[#B4C2B9] bg-[#FAFAF5] dark:bg-[#0F1612] p-3 rounded-lg border border-[#E5E5DC] dark:border-[#243329]">
               {replying?.message}
             </p>
             <Textarea

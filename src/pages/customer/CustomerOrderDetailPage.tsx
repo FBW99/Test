@@ -37,7 +37,7 @@ export function CustomerOrderDetailPage() {
           <span>Back to My Orders</span>
         </Button>
         <Card>
-          <CardContent className="p-8 text-center text-sm text-[#4B5563]">
+          <CardContent className="p-8 text-center text-sm text-[#4B5563] dark:text-[#B4C2B9]">
             Order not found.
           </CardContent>
         </Card>
@@ -72,12 +72,12 @@ export function CustomerOrderDetailPage() {
         />
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <h1 className="font-display text-2xl font-bold text-[#1F2937] font-mono">
+            <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2] font-mono">
               {order.id}
             </h1>
             <StatusText status={order.status} />
           </div>
-          <p className="text-xs text-[#6B7280]">
+          <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
             Placed {formatDateTime(order.createdAt)} · {order.paymentMethod}
           </p>
         </div>
@@ -90,13 +90,13 @@ export function CustomerOrderDetailPage() {
             <CardHeader>
               <CardTitle className="text-base">Order Items</CardTitle>
             </CardHeader>
-            <CardContent className="divide-y divide-[#F2F2EA]">
+            <CardContent className="divide-y divide-[#F2F2EA] dark:divide-[#1D2A22]">
               {order.items.map((item) => (
                 <div
                   key={item.id}
                   className="py-3 first:pt-0 last:pb-0 flex items-center gap-4"
                 >
-                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-[#F2F2EA]">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-[#F2F2EA] dark:bg-[#18231C]">
                     <SafeImage
                       src={item.productImage}
                       alt={item.productName}
@@ -104,35 +104,35 @@ export function CustomerOrderDetailPage() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[#1F2937] truncate">
+                    <p className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2] truncate">
                       {item.productName}
                     </p>
-                    <p className="text-xs text-[#6B7280]">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                       {item.sellerWorkshopLabel} · Qty {item.quantity}
                     </p>
                   </div>
-                  <span className="font-mono text-sm font-semibold text-[#1F2937] tabular-nums">
+                  <span className="font-mono text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2] tabular-nums">
                     {formatETB(item.subtotalETB)}
                   </span>
                 </div>
               ))}
 
               <div className="pt-4 mt-2 space-y-1.5 text-sm">
-                <div className="flex justify-between text-[#4B5563]">
+                <div className="flex justify-between text-[#4B5563] dark:text-[#B4C2B9]">
                   <span>Items Subtotal</span>
                   <span className="font-mono tabular-nums">
                     {formatETB(order.subtotalETB)}
                   </span>
                 </div>
-                <div className="flex justify-between text-[#4B5563]">
+                <div className="flex justify-between text-[#4B5563] dark:text-[#B4C2B9]">
                   <span>Delivery Fee</span>
                   <span className="font-mono tabular-nums">
                     {formatETB(order.deliveryFeeETB)}
                   </span>
                 </div>
-                <div className="flex justify-between text-base font-bold text-[#1F2937] pt-2 border-t border-[#E5E5DC]">
+                <div className="flex justify-between text-base font-bold text-[#1F2937] dark:text-[#F1F5F2] pt-2 border-t border-[#E5E5DC] dark:border-[#243329]">
                   <span>Total</span>
-                  <span className="font-mono text-[#166534] tabular-nums">
+                  <span className="font-mono text-[#166534] dark:text-[#4ADE80] tabular-nums">
                     {formatETB(order.totalETB)}
                   </span>
                 </div>
@@ -149,18 +149,18 @@ export function CustomerOrderDetailPage() {
               {order.timeline.map((event) => (
                 <div key={event.id} className="flex items-start gap-3">
                   <CheckCircle2
-                    className="h-4 w-4 text-[#166534] mt-0.5 shrink-0"
+                    className="h-4 w-4 text-[#166534] dark:text-[#4ADE80] mt-0.5 shrink-0"
                     aria-hidden="true"
                   />
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#1F2937]">
+                    <p className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2]">
                       {event.label}
                     </p>
-                    <p className="text-xs text-[#6B7280]">
+                    <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">
                       {event.actor} · {formatDateTime(event.timestamp)}
                     </p>
                     {event.note && (
-                      <p className="mt-1 text-xs text-[#4B5563]">{event.note}</p>
+                      <p className="mt-1 text-xs text-[#4B5563] dark:text-[#B4C2B9]">{event.note}</p>
                     )}
                   </div>
                 </div>
@@ -176,21 +176,21 @@ export function CustomerOrderDetailPage() {
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
               <div>
-                <p className="text-xs text-[#6B7280]">Recipient</p>
-                <p className="font-medium text-[#1F2937]">{order.customerName}</p>
-                <p className="text-xs font-mono text-[#4B5563]">
+                <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">Recipient</p>
+                <p className="font-medium text-[#1F2937] dark:text-[#F1F5F2]">{order.customerName}</p>
+                <p className="text-xs font-mono text-[#4B5563] dark:text-[#B4C2B9]">
                   {order.customerPhone}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-[#6B7280]">Address</p>
-                <p className="text-[#1F2937]">
+                <p className="text-xs text-[#6B7280] dark:text-[#8A9990]">Address</p>
+                <p className="text-[#1F2937] dark:text-[#F1F5F2]">
                   {order.deliveryAddress}, {order.city}
                 </p>
               </div>
-              <div className="pt-2 border-t border-[#E5E5DC] flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs text-[#4B5563]">
-                  <Truck className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+              <div className="pt-2 border-t border-[#E5E5DC] dark:border-[#243329] flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs text-[#4B5563] dark:text-[#B4C2B9]">
+                  <Truck className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
                   <span>
                     {order.deliveryPartnerName
                       ? `Courier: ${order.deliveryPartnerName}`
@@ -206,13 +206,13 @@ export function CustomerOrderDetailPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-base flex items-center gap-2">
-                <MessageSquare className="h-4 w-4 text-[#166534]" aria-hidden="true" />
+                <MessageSquare className="h-4 w-4 text-[#166534] dark:text-[#4ADE80]" aria-hidden="true" />
                 <span>Need Help? Contact Herbiz</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleInquiry} className="space-y-3">
-                <p className="text-xs text-[#4B5563]">
+                <p className="text-xs text-[#4B5563] dark:text-[#B4C2B9]">
                   Herbiz manages all seller coordination and delivery inquiries on your behalf.
                 </p>
                 <div className="space-y-1.5">

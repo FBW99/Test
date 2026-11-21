@@ -37,16 +37,16 @@ export function SellerOrdersPage() {
             { label: "Incoming Orders" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold text-[#1F2937]">
+        <h1 className="font-display text-2xl font-bold text-[#1F2937] dark:text-[#F1F5F2]">
           Incoming Orders from Herbiz
         </h1>
-        <p className="text-sm text-[#4B5563]">
+        <p className="text-sm text-[#4B5563] dark:text-[#B4C2B9]">
           Confirm stock and pack your products. Herbiz handles all customer communication and courier pickup.
         </p>
       </div>
 
-      <div className="rounded-xl border border-[#E5E5DC] bg-white p-4 flex items-start gap-3 text-xs text-[#4B5563]">
-        <ShieldCheck className="h-4 w-4 text-[#166534] shrink-0 mt-0.5" aria-hidden="true" />
+      <div className="rounded-xl border border-[#E5E5DC] dark:border-[#243329] bg-white dark:bg-[#121A15] p-4 flex items-start gap-3 text-xs text-[#4B5563] dark:text-[#B4C2B9]">
+        <ShieldCheck className="h-4 w-4 text-[#166534] dark:text-[#4ADE80] shrink-0 mt-0.5" aria-hidden="true" />
         <span>
           Customer phone numbers and home addresses are kept private by Herbiz. Once you mark items Ready for Pickup, a Herbiz courier collects the parcel from your workshop.
         </span>
@@ -67,20 +67,20 @@ export function SellerOrdersPage() {
             return (
               <Card key={order.id}>
                 <CardContent className="p-5 space-y-4">
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-[#F2F2EA] pb-3">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-[#F2F2EA] dark:border-[#1D2A22] pb-3">
                     <div>
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-base font-bold text-[#1F2937]">
+                        <span className="font-mono text-base font-bold text-[#1F2937] dark:text-[#F1F5F2]">
                           {order.id}
                         </span>
                         <StatusText status={currentStage} />
                       </div>
-                      <p className="text-xs text-[#6B7280] mt-0.5">
+                      <p className="text-xs text-[#6B7280] dark:text-[#8A9990] mt-0.5">
                         Requested {formatShortDate(order.createdAt)} · Delivery City:{" "}
                         {order.city} · Order Status: {order.status}
                       </p>
                     </div>
-                    <p className="font-mono text-sm font-semibold text-[#166534] tabular-nums">
+                    <p className="font-mono text-sm font-semibold text-[#166534] dark:text-[#4ADE80] tabular-nums">
                       Gross Items: {formatETB(itemsTotal)}
                     </p>
                   </div>
@@ -89,9 +89,9 @@ export function SellerOrdersPage() {
                     {myItems.map((item) => (
                       <div
                         key={item.id}
-                        className="flex items-center gap-3 rounded-lg bg-[#FAFAF5] p-3"
+                        className="flex items-center gap-3 rounded-lg bg-[#FAFAF5] dark:bg-[#0F1612] border border-transparent dark:border-[#243329] p-3"
                       >
-                        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-[#F2F2EA]">
+                        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-[#F2F2EA] dark:bg-[#18231C]">
                           <SafeImage
                             src={item.productImage}
                             alt={item.productName}
@@ -99,15 +99,15 @@ export function SellerOrdersPage() {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-[#1F2937] truncate">
+                          <p className="text-sm font-semibold text-[#1F2937] dark:text-[#F1F5F2] truncate">
                             {item.productName}
                           </p>
-                          <p className="text-xs text-[#4B5563] tabular-nums">
+                          <p className="text-xs text-[#4B5563] dark:text-[#B4C2B9] tabular-nums">
                             Quantity needed: <span className="font-bold">{item.quantity}</span> ·{" "}
                             {formatETB(item.subtotalETB)}
                           </p>
                           {item.preparationNote && (
-                            <p className="text-xs text-[#166534] mt-0.5">
+                            <p className="text-xs text-[#166534] dark:text-[#4ADE80] mt-0.5">
                               Note: {item.preparationNote}
                             </p>
                           )}
