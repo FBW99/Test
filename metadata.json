@@ -1,0 +1,6 @@
+{
+  "name": "HERBIZ — Managed Women Entrepreneur Marketplace",
+  "description": "Women Create. Herbiz Connects. Customers Receive. A managed digital marketplace connecting women entrepreneurs with customers through curated product management, centralized order coordination, and reliable delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
